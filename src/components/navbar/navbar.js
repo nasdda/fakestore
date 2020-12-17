@@ -7,6 +7,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { useDispatch } from 'react-redux';
+import { toggleDrawer } from '../../redux/slice/slice'
 import './navbar.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -27,12 +29,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
     const classes = useStyles();
-
+    const dispatch = useDispatch()
     return (
         <div className={classes.root}>
             <AppBar position="fixed" color="default">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => dispatch(toggleDrawer())}>
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>

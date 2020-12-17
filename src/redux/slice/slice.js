@@ -14,5 +14,4 @@ export const slice = createSlice({
 
 export const { toggleDrawer } = slice.actions
 export const selectOpen = state => state.main.openDrawer
-
 export default slice.reducer
