@@ -2,6 +2,7 @@ import React from 'react'
 import { selectOpen, toggleDrawer } from '../../redux/slice/slice'
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core'
+import Tooltip from '@material-ui/core/Tooltip'
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -14,8 +15,9 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import CategoryIcon from '@material-ui/icons/Category';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
-
+import { NavLink } from 'react-router-dom'
 
 const drawerWidth = 280;
 
@@ -54,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
     },
@@ -74,6 +75,10 @@ const useStyles = makeStyles((theme) => ({
         }),
         marginLeft: 0,
     },
+    link: {
+        textDecoration: 'none',
+        color: 'inherit'
+    }
 }));
 
 
@@ -93,42 +98,58 @@ export default function Sidebar() {
                 }}
             >
                 <div className={classes.drawerHeader}>
-                    <IconButton onClick={() => dispatch(toggleDrawer())}>
-                        <ChevronLeftIcon />
-                    </IconButton>
+                    <Tooltip title="Hide Sidebar">
+                        <IconButton onClick={() => dispatch(toggleDrawer())}>
+                            <ChevronLeftIcon />
+                        </IconButton>
+                    </Tooltip>
                 </div>
                 <Divider />
                 <List>
+                    <NavLink to="/" className={classes.link}>
+                        <ListItem button key="Home">
+                            <ListItemIcon><HomeIcon /></ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItem>
+                    </NavLink>
                     <ListItem button key="Filter">
                         <ListItemIcon><FilterListIcon /></ListItemIcon>
-                        <ListItemText primary={"Filter"} />
+                        <ListItemText primary="Filter" />
+                    </ListItem>
+                    <ListItem button key="Electronics">
+                        <ListItemIcon><CategoryIcon /></ListItemIcon>
+                        <ListItemText primary="Electronics" />
                     </ListItem>
                     <ListItem button key="Clothing & Fashion">
                         <ListItemIcon><CategoryIcon /></ListItemIcon>
-                        <ListItemText primary={"Clothing & Fashion"} />
+                        <ListItemText primary="Clothing & Fashion" />
                     </ListItem>
-                    <ListItem button key="Technologies">
+                    <ListItem button key="Groceries">
                         <ListItemIcon><CategoryIcon /></ListItemIcon>
-                        <ListItemText primary={"Technologies"} />
+                        <ListItemText primary="Groceries" />
                     </ListItem>
                 </List>
                 <Divider />
                 <List>
-                    <ListItem button key="Account">
-                        <ListItemIcon><AccountCircleIcon /></ListItemIcon>
-                        <ListItemText primary={"Account"} />
-                    </ListItem>
+                    <NavLink to='/account' className={classes.link}>
+                        <ListItem button key="Account">
+                            <ListItemIcon><AccountCircleIcon /></ListItemIcon>
+                            <ListItemText primary="Account" />
+                        </ListItem>
+                    </NavLink>
                     <ListItem button key="Balance">
                         <ListItemIcon><AttachMoneyIcon /></ListItemIcon>
-                        <ListItemText primary={"Balance"} />
+                        <ListItemText primary="Balance" />
                     </ListItem>
                 </List>
                 <Divider />
                 <List>
-                    <ListItem button key="About">
-                        <ListItemIcon><InfoIcon /></ListItemIcon>
-                        <ListItemText primary={"About"} />
-                    </ListItem>
+                    <NavLink to='/about' className={classes.link}>
+                        <ListItem button key="About">
+                            <ListItemIcon><InfoIcon /></ListItemIcon>
+                            <ListItemText primary="About" />
+                        </ListItem>
+                    </NavLink>
                 </List>
             </Drawer>
         </div>
@@ -136,14 +157,3 @@ export default function Sidebar() {
 }
 
 
-
-
-// export default function Sidebar() {
-
-//     return (
-//         <div>
-//             <Drawer anchor='left' open={open} />
-//             <button onClick={() => dispatch(toggleDrawer())}>Open</button>
-//         </div>
-//     )
-// }
