@@ -1,7 +1,7 @@
 import React from 'react'
 import {
-    Card, Typography, CardMedia, CardContent, makeStyles,
-    useMediaQuery, CardActionArea
+    Card, Typography, CardMedia, 
+    CardContent, makeStyles, CardActionArea
 } from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
 
@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
         margin: "auto",
         [theme.breakpoints.down('sm')]: {
             width: "100%"
-        }
+        },
+        height: 500
     },
 }));
 
@@ -60,7 +61,7 @@ function Item(props) {
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.item.title}
                     </Typography>
-                    <Typography variant="body1" color="textSecondary" component="h2" style={{height: 50}}>
+                    <Typography variant="body1" color="textSecondary" component="h2" style={{ height: 50 }}>
                         {props.item.description}
                     </Typography>
                 </CardContent>

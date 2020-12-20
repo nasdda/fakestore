@@ -137,10 +137,12 @@ export default function Sidebar() {
                             <ListItemText primary="Account" />
                         </ListItem>
                     </NavLink>
-                    <ListItem button key="Balance">
-                        <ListItemIcon><AttachMoneyIcon /></ListItemIcon>
-                        <ListItemText primary="Balance" />
-                    </ListItem>
+                    <NavLink to='/balance' className={classes.link}>
+                        <ListItem button key="Balance">
+                            <ListItemIcon><AttachMoneyIcon /></ListItemIcon>
+                            <ListItemText primary="Balance" />
+                        </ListItem>
+                    </NavLink>
                 </List>
                 <Divider />
                 <List>

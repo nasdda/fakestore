@@ -24,7 +24,7 @@ function Textchunk(props) {
 function About() {
     const theme = createMuiTheme({
         typography: {
-            fontSize: 16,
+            fontSize: 16
         },
     });
     const classes = useStyles()
