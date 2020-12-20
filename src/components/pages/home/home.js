@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Card, Typography, CardMedia, 
+    Card, Typography, CardMedia,
     CardContent, makeStyles, CardActionArea
 } from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
@@ -24,9 +24,8 @@ export default function Home() {
     const items = [
         {
             title: "Welcome!",
-            description: "Please check out the About page located in the navigation menu at the top left corner to find out what this site is about.",
+            description: "Please check out the About page located in the sidebar menu at the top left corner to find out what this site is about.",
             image: "https://images.ctfassets.net/eh05n0xjhplz/1Wcljis3B3iqDgFQnDjxe8/18e0f9ed84b6382ddfaef8de34b6469b/Getting_Started_with_Calendly.jpg",
-
         },
         {
             title: "Discount Event",
@@ -47,7 +46,7 @@ export default function Home() {
 
 function Item(props) {
     return (
-        <Card>
+        <Card variant="outlined">
             <CardActionArea>
                 <CardMedia
                     component="img"
