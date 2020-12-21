@@ -3,7 +3,8 @@ import {
     FormControl, InputLabel,
     OutlinedInput, makeStyles,
     InputAdornment, Card,
-    Typography, Grid
+    Typography, Grid,
+    Button,
 } from '@material-ui/core'
 import { isCurrency } from 'validator'
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         width: 600,
-        height: 250,
+        height: 200,
         margin: "auto",
         display: "flex",
         alignItems: "center",
@@ -54,12 +55,11 @@ function Details() {
                 </Grid>
                 <Grid >
                     <Typography style={{ fontFamily: "inherit" }}>
-                        10.00
+                        {balance.toFixed(2)}
                     </Typography>
                 </Grid>
             </Grid>
         </Card>
-
     )
 
 }
@@ -77,23 +77,34 @@ export default function Balance() {
             setAmount(val)
         }
     }
+    const handleClick = (event) => {
+        if (amount && parseFloat(amount) > 0) {
+            if (window.confirm(`Recharge $${amount} to your balance?`)) {
+                dispatch(updateBalance({ amount: parseFloat(amount) }))
+                setAmount('')
+            }
+
+        }
+    }
     return (
         <div style={{ fontSize: 16 }}>
             <br />
             <h2>Your Balance</h2>
             <Details />
             <FormControl className={classes.rechargeForm} variant="outlined">
-                <InputLabel>Recharge</InputLabel>
+                <InputLabel>Amount</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-amount"
                     autoComplete="off"
                     value={amount}
-                    label="Recharge"
+                    label="Amount"
                     placeholder="0.00"
                     onChange={amountChange}
                     startAdornment={<InputAdornment position="start">$</InputAdornment>}
                     labelWidth={60}
+                    required
                 />
+                <Button onClick={handleClick} variant="outlined">Recharge</Button>
             </FormControl>
         </div>
     )

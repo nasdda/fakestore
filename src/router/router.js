@@ -18,7 +18,8 @@ import Balance from '../components/pages/balance/balance'
 export default function App() {
     return (
         <Router>
-            <Navbar />
+            <Navbar position="fixed" />
+            <Navbar position="static" />
             <Sidebar />
             <Switch>
                 <Route path="/" component={Home} exact={true} />

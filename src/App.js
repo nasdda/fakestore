@@ -9,7 +9,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core'
 function App() {
   const theme = createMuiTheme({
     typography: {
-      fontSize: 16
+      fontSize: 18
     },
   });
   return (

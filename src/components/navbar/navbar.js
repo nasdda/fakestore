@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(5),
     },
     title: {
         textDecoration: 'none',
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex"
     },
     menuOuter: {
-        width: 80,
+        width: 130,
     },
     link: {
         color: "inherit",
@@ -38,12 +38,12 @@ const useStyles = makeStyles((theme) => ({
     offset: theme.mixins.toolbar,
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
     const classes = useStyles();
     const dispatch = useDispatch()
     return (
         <div className={classes.root}>
-            <AppBar position="fixed" color="default">
+            <AppBar position={props.position} color="default">
                 <Toolbar>
                     <div className={classes.menuOuter}>
                         <Tooltip title="Show Sidebar">
@@ -57,7 +57,7 @@ export default function Navbar() {
                             <span style={{ fontFamily: "BlackChancery", fontWeight: "bold", fontSize: 36 }}>Fake Store</span>
                         </Typography>
                     </NavLink>
-                    <div>
+                    <div className={classes.menuOuter}>
                         <NavLink to='/cart' className={classes.link}>
                             <IconButton
                                 color="inherit">
@@ -77,7 +77,6 @@ export default function Navbar() {
                     </div>
                 </Toolbar>
             </AppBar>
-            <Toolbar />
         </div>
     );
 }

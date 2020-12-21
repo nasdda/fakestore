@@ -11,13 +11,13 @@ export const slice = createSlice({
             state.openDrawer = !state.openDrawer
         },
         updateBalance: (state, action) => {
-            state.balace += action.amount
+            state.balance += action.payload.amount
         }
     }
 })
 
 export const { toggleDrawer, updateBalance } = slice.actions
 export const selectOpen = state => state.main.openDrawer
-export const selectBalance = state => state.main.balace
+export const selectBalance = state => state.main.balance
 
 export default slice.reducer
