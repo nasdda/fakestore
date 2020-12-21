@@ -92,7 +92,7 @@ export default function Balance() {
             <h2>Your Balance</h2>
             <Details />
             <FormControl className={classes.rechargeForm} variant="outlined">
-                <InputLabel>Amount</InputLabel>
+                <InputLabel variant="outlined">Amount</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-amount"
                     autoComplete="off"

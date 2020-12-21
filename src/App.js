@@ -7,11 +7,14 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core'
 
 // end test
 function App() {
-  const theme = createMuiTheme({
-    typography: {
-      fontSize: 18
+  const theme = createMuiTheme();
+
+  theme.typography.h3 = {
+    fontSize: '1.3rem',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem',
     },
-  });
+  };
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

@@ -70,7 +70,7 @@ function Item(props) {
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.item.title}
                     </Typography>
-                    <Typography variant="body1" color="textSecondary" component="h2" style={{ height: 50 }}>
+                    <Typography variant="h3" color="textSecondary" component="h2" style={{ height: 50 }}>
                         {props.item.description}
                     </Typography>
                 </CardContent>
