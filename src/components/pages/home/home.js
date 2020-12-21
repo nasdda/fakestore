@@ -10,12 +10,22 @@ import Carousel from 'react-material-ui-carousel'
 const useStyles = makeStyles((theme) => ({
     root: {
         width: 900,
+        height: 500,
         margin: "auto",
         [theme.breakpoints.down('sm')]: {
-            width: "100%"
+            width: "100%",
         },
-        height: 500
     },
+    cardImage: {
+        height: 300,
+        width: "100%",
+        [theme.breakpoints.down('md')]: {
+            height: 250
+        },
+        [theme.breakpoints.down('xs')]: {
+            height: 150
+        }
+    }
 }));
 
 
@@ -45,16 +55,16 @@ export default function Home() {
 
 
 function Item(props) {
+    const classes = useStyles()
     return (
         <Card variant="outlined">
             <CardActionArea>
                 <CardMedia
                     component="img"
                     alt={props.item.title}
-                    height="300"
-                    width="100%"
                     image={props.item.image}
                     title={props.item.title}
+                    className={classes.cardImage}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
