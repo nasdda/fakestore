@@ -20,8 +20,8 @@ export default function App() {
     return (
         <Router>
             <Navbar position="fixed" />
-            <Navbar position="static" />
             <Sidebar />
+            <br /><br /><br />
             <Switch>
                 <Route path="/" component={Home} exact={true} />
                 <Route path="/about" component={About} />
