@@ -19,9 +19,9 @@ import Electronics from '../components/pages/electronics/electronics'
 export default function App() {
     return (
         <Router>
+            <Navbar position="relative" />
             <Navbar position="fixed" />
             <Sidebar />
-            <br /><br /><br />
             <Switch>
                 <Route path="/" component={Home} exact={true} />
                 <Route path="/about" component={About} />
