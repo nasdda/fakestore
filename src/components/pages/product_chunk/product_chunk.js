@@ -2,7 +2,7 @@ import React from 'react'
 import {
     Card, CardMedia,
     Typography, makeStyles,
-    CardContent, Divider
+    Divider
 } from '@material-ui/core'
 
 
@@ -54,6 +54,6 @@ export default function ProductChunk(props) {
                     {props.info}
                 </Typography>
             </div>
-        </Card >
+        </Card>
     )
 }
