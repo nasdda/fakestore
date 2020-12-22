@@ -1,7 +1,8 @@
 import React from 'react'
 import {
-    Card, Typography, CardMedia,
-    CardContent, makeStyles, CardActionArea
+    Card, Typography,
+    CardContent, makeStyles,
+
 } from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
 
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
             height: 250
         },
         [theme.breakpoints.down('xs')]: {
-            height: 150
+            height: 200
         }
     }
 }));
@@ -58,23 +59,19 @@ function Item(props) {
     const classes = useStyles()
     return (
         <Card variant="outlined">
-            <CardActionArea>
-                <CardMedia
-                    component="img"
-                    alt={props.item.title}
-                    image={props.item.image}
-                    title={props.item.title}
-                    className={classes.cardImage}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {props.item.title}
-                    </Typography>
-                    <Typography variant="h3" color="textSecondary" component="h2" style={{ height: 50 }}>
-                        {props.item.description}
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
+            <img
+                alt={props.item.title}
+                src={props.item.image}
+                className={classes.cardImage}
+            />
+            <CardContent>
+                <Typography gutterBottom variant="h1">
+                    {props.item.title}
+                </Typography>
+                <Typography variant="h6" color="textSecondary" component="h2" style={{ height: 50 }}>
+                    {props.item.description}
+                </Typography>
+            </CardContent>
         </Card>
     )
 }

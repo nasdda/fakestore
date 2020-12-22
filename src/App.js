@@ -23,11 +23,11 @@ function App() {
   }
   theme.typography.h5 = {
     fontSize: '1rem',
-    color: "#4f4f4f",
     [theme.breakpoints.down('sm')]: {
       fontSize: '0.8rem'
     }
   }
+  
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

@@ -1,18 +1,15 @@
 import React from 'react'
 import {
-    Card, CardMedia,
-    Typography, makeStyles,
-    Divider
+    Card, Typography, makeStyles,
+    Divider, CardActionArea
 } from '@material-ui/core'
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: "flex",
-        alignItems: "center",
-        margin: "auto",
         height: 200,
         width: 700,
+        margin: "auto",
         [theme.breakpoints.down('sm')]: {
             height: 180,
             width: 500
@@ -20,13 +17,20 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             height: 180,
             width: "100%"
-        }
+        },
+    },
+    contents: {
+        display: "flex",
+        alignItems: "center",
+        width: "100%",
+        height: "100%"
     },
     image: {
-        height: "100%",
+        height: "80%",
         width: 100,
         [theme.breakpoints.down('sm')]: {
-            width: 80
+            width: 80,
+            height: "80%"
         }
     },
     info: {
@@ -41,23 +45,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ProductChunk(props) {
-
     const classes = useStyles()
+    let name = props.name
+    if (name.length > 40)
+        name = name.slice(0, 38) + '...'
+    let info = props.info
+    if (info.length > 200)
+        info = info.slice(0, 198) + '...'
     return (
         <Card className={classes.root} variant="outlined">
-            <CardMedia image={props.coverImage}
-                className={classes.image}
-            />
-            <div className={classes.info}>
-                <Typography variant="h1" style={{ color: "#002966" }}>
-                    {props.name}
-                    <Divider />
-                </Typography>
-                <br />
-                <Typography variant="h5" >
-                    {props.info}
-                </Typography>
-            </div>
+            <CardActionArea className={classes.contents}>
+                <img src={props.coverImage} alt="product" className={classes.image} />
+                <div className={classes.info}>
+                    <Typography variant="h1" gutterBottom>
+                        {name}
+                        <Divider />
+                    </Typography>
+                    <Typography variant="h5" color="textSecondary">
+                        {info}
+                    </Typography>
+                </div>
+            </CardActionArea>
         </Card>
     )
 }
