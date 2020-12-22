@@ -10,8 +10,6 @@ import { isCurrency } from 'validator'
 import { useSelector, useDispatch } from 'react-redux';
 import { updateBalance, selectBalance } from '../../../redux/slice/slice'
 
-import MoneyIcon from '@material-ui/icons/AttachMoney';
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -50,12 +48,9 @@ function Details() {
     return (
         <Card variant="outlined" className={classes.card}>
             <Grid container justify="center" className={classes.balanceInfo}>
-                <Grid >
-                    <MoneyIcon />
-                </Grid>
-                <Grid >
-                    <Typography style={{ fontFamily: "inherit" }}>
-                        {balance.toFixed(2)}
+                <Grid item>
+                    <Typography variant="h1" style={{ fontFamily: "inherit" }}>
+                        $ {balance.toFixed(2)}
                     </Typography>
                 </Grid>
             </Grid>
@@ -92,7 +87,7 @@ export default function Balance() {
             <h2>Your Balance</h2>
             <Details />
             <FormControl className={classes.rechargeForm} variant="outlined">
-                <InputLabel variant="outlined">Amount</InputLabel>
+                <InputLabel>Amount</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-amount"
                     autoComplete="off"

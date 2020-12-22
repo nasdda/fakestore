@@ -15,6 +15,19 @@ function App() {
       fontSize: '1rem',
     },
   };
+  theme.typography.h1 = {
+    fontSize: '1.3rem',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1rem'
+    }
+  }
+  theme.typography.h5 = {
+    fontSize: '1rem',
+    color: "#4f4f4f",
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.8rem'
+    }
+  }
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

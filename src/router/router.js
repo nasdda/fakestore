@@ -14,6 +14,7 @@ import About from '../components/pages/about/about'
 import Cart from '../components/pages/cart/cart'
 import Account from '../components/pages/account/account'
 import Balance from '../components/pages/balance/balance'
+import Electronics from '../components/pages/electronics/electronics'
 
 export default function App() {
     return (
@@ -27,6 +28,7 @@ export default function App() {
                 <Route path="/cart" component={Cart} />
                 <Route path="/account" component={Account} />
                 <Route path="/balance" component={Balance} />
+                <Route path="/electronics" component={Electronics} />
             </Switch>
         </Router>
     );

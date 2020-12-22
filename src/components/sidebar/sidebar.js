@@ -116,17 +116,15 @@ export default function Sidebar() {
                         <ListItemIcon><FilterListIcon /></ListItemIcon>
                         <ListItemText primary="Filter" />
                     </ListItem>
-                    <ListItem button key="Electronics">
-                        <ListItemIcon><CategoryIcon /></ListItemIcon>
-                        <ListItemText primary="Electronics" />
-                    </ListItem>
+                    <NavLink to="/electronics" className={classes.link}>
+                        <ListItem button key="Electronics">
+                            <ListItemIcon><CategoryIcon /></ListItemIcon>
+                            <ListItemText primary="Electronics" />
+                        </ListItem>
+                    </NavLink>
                     <ListItem button key="Clothing & Fashion">
                         <ListItemIcon><CategoryIcon /></ListItemIcon>
                         <ListItemText primary="Clothing & Fashion" />
-                    </ListItem>
-                    <ListItem button key="Groceries">
-                        <ListItemIcon><CategoryIcon /></ListItemIcon>
-                        <ListItemText primary="Groceries" />
                     </ListItem>
                 </List>
                 <Divider />
