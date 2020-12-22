@@ -54,7 +54,7 @@ export default function Navbar(props) {
                     </div>
                     <NavLink to='/' className={classes.title}>
                         <Typography variant="h6">
-                            <span style={{ fontFamily: "BlackChancery", fontWeight: "bold", fontSize: 36 }}>Fake Store</span>
+                            <span style={{ fontFamily: "BlackChancery", fontWeight: "bold", fontSize: "2rem" }}>Fake Store</span>
                         </Typography>
                     </NavLink>
                     <div className={classes.menuOuter}>
