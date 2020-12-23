@@ -68,7 +68,7 @@ function Item(props) {
                 <Typography gutterBottom variant="h1">
                     {props.item.title}
                 </Typography>
-                <Typography variant="h6" color="textSecondary" component="h2" style={{ height: 50 }}>
+                <Typography variant="h5" color="textSecondary" style={{ height: 50 }}>
                     {props.item.description}
                 </Typography>
             </CardContent>

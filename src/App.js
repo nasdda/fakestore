@@ -27,7 +27,8 @@ function App() {
       fontSize: '0.8rem'
     }
   }
-  
+
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
