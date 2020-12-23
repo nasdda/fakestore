@@ -1,64 +1,61 @@
 import React from 'react'
 import {
-    Card, Typography, makeStyles,
-    Divider, CardActionArea, Box
+    Typography, makeStyles, Card,
+    Divider, CardActionArea, 
 } from '@material-ui/core'
 import StarRatings from 'react-star-ratings';
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        height: 200,
-        width: 900,
-        margin: "auto",
-        [theme.breakpoints.down('sm')]: {
-            height: 200,
-            width: 700
-        },
-        [theme.breakpoints.down('xs')]: {
-            height: 210,
-            width: "100%"
-        },
-    },
-    contents: {
         display: "flex",
         alignItems: "center",
+        height: 230,
+        width: 900,
+        [theme.breakpoints.down('sm')]: {
+            height: 250,
+            width: 600
+        },
+        [theme.breakpoints.down('xs')]: {
+            height: 250,
+            width: "100%"
+        },
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: 30,
+        marginBottom: 30,
+    },
+    outer: {
         width: "100%",
-        height: "100%"
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
+        minWidth: 0,
+        padding: 10
     },
     image: {
         height: "80%",
         width: 150,
         [theme.breakpoints.down('sm')]: {
-            width: 130,
-            height: "80%"
+            width: 150,
+            height: 200
         },
-        marginLeft: 30
-    },
-    info: {
-        margin: "auto",
-        width: "80%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: 5,
-    },
-    details: {
-        marginTop: 10
-    },
-    specifics: {
-        overflow: "hidden",
-        height: 130,
-        [theme.breakpoints.down('xs')]: {
-            height: 150
-        }
+        margin: 10
     },
     name: {
-        height: '1em',
+        display: "block",
+        maxWidth: "100%",
+        whiteSpace: "nowrap",
         overflow: "hidden",
+        textOverflow: "ellipsis",
+        height: "2em"
+    },
+    description: {
+        maxHeight: 80,
+        overflow: "hidden"
     }
-
 }));
 
 export default function ProductChunk(props) {
@@ -68,36 +65,26 @@ export default function ProductChunk(props) {
     const rating = parseFloat(props.data.ratingScore)
     const price = parseFloat(props.data.price).toFixed(2)
     return (
-        <React.Fragment>
-            <Card className={classes.root} variant="outlined">
-                <CardActionArea className={classes.contents}>
-                    <img src={props.data.images[0]} alt="product" className={classes.image} />
-                    <div className={classes.info}>
-                        <div className={classes.specifics}>
-                            <Box my={1}>
-                                <Typography variant="h1" className={classes.name}>
-                                    {name}
-                                </Typography>
-                            </Box>
-                            <Divider />
-                            <Typography variant="h5" color="textSecondary" display="block">
-                                {info}
-                            </Typography>
-                        </div>
-                        <div className={classes.details}>
-                            <StarRatings numberOfStars={5}
-                                name='rating'
-                                rating={rating}
-                                starDimension="25"
-                                starRatedColor="orange"
-                            />
-                            <h2>${price}</h2>
-                        </div>
-                    </div>
-                </CardActionArea>
-            </Card>
+        <Card className={classes.root} variant="outlined">
+            <img src={props.data.images[0]} alt="product" className={classes.image} />
+            <CardActionArea className={classes.outer}>
+                <Typography variant="h1" className={classes.name}>
+                    {name}
+                </Typography>
+                <Typography variant="h5" color="textSecondary" display="block" className={classes.description}>
+                    {info}
+                </Typography>
+                <div>
+                    <StarRatings numberOfStars={5}
+                        name='rating'
+                        rating={rating}
+                        starDimension="20"
+                        starRatedColor="orange"
+                    />
+                    <h2>${price}</h2>
+                </div>
+            </CardActionArea>
             <Divider />
-        </React.Fragment >
-
+        </Card>
     )
 }
