@@ -1,9 +1,20 @@
 import React from 'react'
 
 import AccountImage from '../../../images/account.png'
-import { Card, makeStyles } from '@material-ui/core'
-import { selectName, updateName, nameFocusOut } from '../../../redux/slice/slice'
-import { useSelector, useDispatch } from 'react-redux';
+import {
+    Card, makeStyles,
+    IconButton
+} from '@material-ui/core'
+import {
+    selectName, updateName,
+    nameFocusOut, selectBalance
+} from '../../../redux/slice/slice'
+import { useSelector, useDispatch } from 'react-redux'
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import EditIcon from '@material-ui/icons/Edit';
+import { NavLink } from 'react-router-dom'
+import TextareaAutosize from 'react-textarea-autosize';
+
 
 const useStyles = makeStyles(theme => ({
     accountImage: {
@@ -25,12 +36,30 @@ const useStyles = makeStyles(theme => ({
     },
     name: {
         fontSize: "1.2rem",
-        height: "6em",
-        overflow: "hidden",
         border: "none",
         textAlign: "center",
         fontFamily: "inherit",
-        resize: "none",
+        maxWidth: "80%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginBottom: 10,
+        resize: "none"
+    },
+    info: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%"
+    },
+    specifics: {
+        display: "flex",
+        alignItems: "flex-start",
+        width: "100%",
+    },
+    profileHead: {
+        borderBottom: "solid",
+        borderColor: "#878787",
+        width: "100%"
     }
 
 }))
@@ -38,25 +67,48 @@ const useStyles = makeStyles(theme => ({
 export default function Account() {
     const classes = useStyles()
     const username = useSelector(selectName)
+    const balance = useSelector(selectBalance)
     const dispatch = useDispatch()
 
     return (
         <React.Fragment>
             <br />
             <Card variant="outlined" className={classes.profile}>
-                <img src={AccountImage} alt="account" className={classes.accountImage} />
-                <textarea
-                    value={username}
-                    className={classes.name}
-                    onChange={event => {
-                        dispatch(updateName({ name: event.target.value }))
-                    }}
-                    onBlur={event => {
-                        dispatch(nameFocusOut())
-                    }}
-                    maxLength={50}
-                />
+                <div className={classes.profileHead}>
+                    <img src={AccountImage} alt="account" className={classes.accountImage} />
+                    <TextareaAutosize
+                        value={username}
+                        className={classes.name}
+                        onChange={event => {
+                            dispatch(updateName({ name: event.target.value }))
+                        }}
+                        onBlur={event => {
+                            dispatch(nameFocusOut())
+                        }}
+                        maxLength={50}
+                    />
+                </div>
+
+                <br />
+                <div className={classes.specifics}>
+                    <div className={classes.info}>
+                        <div>Balance: ${balance}</div>
+                        <NavLink to="/balance">
+                            <IconButton>
+                                <AddCircleIcon />
+                            </IconButton>
+                        </NavLink>
+                    </div>
+                </div>
+                <div className={classes.specifics} style={{ textAlign: "left" }}>
+                    <div className={classes.info}>
+                        <div>Address: 328 S, 4th Street, Alhambra CA, 91801</div>
+                        <IconButton>
+                            <EditIcon />
+                        </IconButton>
+                    </div>
+                </div>
             </Card>
-        </React.Fragment>
+        </React.Fragment >
     )
 }
