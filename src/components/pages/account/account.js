@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
         margin: "auto",
         padding: 15,
         [theme.breakpoints.down('xs')]: {
-            width: "100%"
+            width: "100%",
+            padding: 0
         }
     },
     name: {
