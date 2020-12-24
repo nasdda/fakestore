@@ -122,10 +122,12 @@ export default function Sidebar() {
                             <ListItemText primary="Electronics" />
                         </ListItem>
                     </NavLink>
-                    <ListItem button key="Clothing & Fashion">
-                        <ListItemIcon><CategoryIcon /></ListItemIcon>
-                        <ListItemText primary="Clothing & Fashion" />
-                    </ListItem>
+                    <NavLink to="/clothing-and-fashion" className={classes.link}>
+                        <ListItem button key="Clothing & Fashion">
+                            <ListItemIcon><CategoryIcon /></ListItemIcon>
+                            <ListItemText primary="Clothing & Fashion" />
+                        </ListItem>
+                    </NavLink>
                 </List>
                 <Divider />
                 <List>

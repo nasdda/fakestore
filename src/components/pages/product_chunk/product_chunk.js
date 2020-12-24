@@ -36,11 +36,10 @@ const useStyles = makeStyles((theme) => ({
         padding: 10
     },
     image: {
-        height: "80%",
+        height: "70%",
         width: 150,
         [theme.breakpoints.down('sm')]: {
-            width: 150,
-            height: 200
+            height: "60%"
         },
         margin: 10
     },
@@ -64,6 +63,7 @@ export default function ProductChunk(props) {
     let info = props.data.description
     const rating = parseFloat(props.data.ratingScore)
     const price = parseFloat(props.data.price).toFixed(2)
+    
     return (
         <Card className={classes.root} variant="outlined">
             <img src={props.data.images[0]} alt="product" className={classes.image} />
