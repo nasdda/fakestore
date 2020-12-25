@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import AccountImage from '../../../images/account.png'
 import {
@@ -7,8 +7,11 @@ import {
 } from '@material-ui/core'
 import {
     selectName, updateName,
-    nameFocusOut, selectBalance
+    nameFocusOut, selectBalance,
+    selectAddress, updateAddress,
+    fixAddress
 } from '../../../redux/slice/slice'
+
 import { useSelector, useDispatch } from 'react-redux'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import EditIcon from '@material-ui/icons/Edit';
@@ -19,7 +22,11 @@ import TextareaAutosize from 'react-textarea-autosize';
 const useStyles = makeStyles(theme => ({
     accountImage: {
         width: 200,
-        height: 200
+        height: 200,
+        [theme.breakpoints.down('xs')]: {
+            width: 150,
+            height: 150
+        },
     },
     profile: {
         display: "flex",
@@ -31,7 +38,7 @@ const useStyles = makeStyles(theme => ({
         padding: 15,
         [theme.breakpoints.down('xs')]: {
             width: "100%",
-            padding: 0
+            padding: 0,
         }
     },
     name: {
@@ -43,7 +50,7 @@ const useStyles = makeStyles(theme => ({
         marginLeft: "auto",
         marginRight: "auto",
         marginBottom: 10,
-        resize: "none"
+        resize: "none",
     },
     info: {
         display: "flex",
@@ -59,7 +66,14 @@ const useStyles = makeStyles(theme => ({
     profileHead: {
         borderBottom: "solid",
         borderColor: "#878787",
-        width: "100%"
+        width: "100%",
+    },
+    edit: {
+        border: "none",
+        resize: "none",
+        marginLeft: 10,
+        fontFamily: "inherit",
+        fontSize: "inherit",
     }
 
 }))
@@ -68,7 +82,41 @@ export default function Account() {
     const classes = useStyles()
     const username = useSelector(selectName)
     const balance = useSelector(selectBalance)
+    const userAddress = useSelector(selectAddress)
     const dispatch = useDispatch()
+    const [edit, setEdit] = useState(false)
+    const editRef = useRef()
+
+    useEffect(() => {
+        if (edit) {
+            editRef.current.focus()
+        }
+    }, [edit])
+
+    const editHandler = event => {
+        setEdit(!edit)
+    }
+
+    let addressSection = (
+        <div style={{ marginLeft: 10, wordBreak: "break-word" }}>{userAddress}</div>
+    )
+
+    if (edit) {
+        addressSection = (
+            <TextareaAutosize
+                ref={editRef}
+                className={classes.edit}
+                value={userAddress}
+                onChange={event => { dispatch(updateAddress({ address: event.target.value })) }}
+                onBlur={event => {
+                    dispatch(fixAddress())
+                    if (!event.relatedTarget) {
+                        setEdit(false)
+                    }
+                }}
+            />
+        )
+    }
 
     return (
         <React.Fragment>
@@ -102,13 +150,13 @@ export default function Account() {
                 </div>
                 <div className={classes.specifics} style={{ textAlign: "left" }}>
                     <div className={classes.info}>
-                        <div>Address: 328 S, 4th Street, Alhambra CA, 91801</div>
-                        <IconButton>
+                        <div style={{ display: "flex", alignItems: "center", maxWidth: "80%" }}>Address:{addressSection}</div>
+                        <IconButton onClick={editHandler}>
                             <EditIcon />
                         </IconButton>
                     </div>
                 </div>
             </Card>
-        </React.Fragment >
+        </React.Fragment>
     )
 }

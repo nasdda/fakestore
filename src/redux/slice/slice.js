@@ -6,7 +6,8 @@ export const slice = createSlice({
     initialState: {
         openDrawer: false,
         balance: 0,
-        name: "Customer"
+        name: "Customer",
+        address: "783 N. 8th St., The Moon, 97388"
     },
     reducers: {
         toggleDrawer: state => {
@@ -24,13 +25,25 @@ export const slice = createSlice({
             } else {
                 state.name = state.name.replace(/\s\s+/g, ' ');
             }
+        },
+        updateAddress: (state, action) => {
+            state.address = action.payload.address.replace(/\s\s+/g, ' ')
+        },
+        fixAddress: state => {
+            if (!state.address.trim()) {
+                state.address = "783 N. 8th St., The Moon, 97388"
+            }
         }
     }
 })
 
-export const { toggleDrawer, updateBalance, updateName, nameFocusOut } = slice.actions
+export const {
+    toggleDrawer, updateBalance,
+    updateName, nameFocusOut,
+    updateAddress, fixAddress } = slice.actions
 export const selectOpen = state => state.main.openDrawer
 export const selectBalance = state => state.main.balance
 export const selectName = state => state.main.name
+export const selectAddress = state => state.main.address
 
 export default slice.reducer
