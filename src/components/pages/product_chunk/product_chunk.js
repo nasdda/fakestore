@@ -1,9 +1,10 @@
 import React from 'react'
 import {
     Typography, makeStyles, Card,
-    Divider, CardActionArea, 
+    Divider, CardActionArea,
 } from '@material-ui/core'
 import StarRatings from 'react-star-ratings';
+import { Link } from 'react-router-dom'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
     description: {
         maxHeight: 80,
         overflow: "hidden"
+    },
+    link: {
+        textDecoration: "none",
+        minWidth: 0,
+        color: "inherit"
     }
 }));
 
@@ -63,27 +69,29 @@ export default function ProductChunk(props) {
     let info = props.data.description
     const rating = parseFloat(props.data.ratingScore)
     const price = parseFloat(props.data.price).toFixed(2)
-    
+
     return (
         <Card className={classes.root} variant="outlined">
             <img src={props.data.images[0]} alt="product" className={classes.image} />
-            <CardActionArea className={classes.outer}>
-                <Typography variant="h1" className={classes.name}>
-                    {name}
-                </Typography>
-                <Typography variant="h5" color="textSecondary" display="block" className={classes.description}>
-                    {info}
-                </Typography>
-                <div>
-                    <StarRatings numberOfStars={5}
-                        name='rating'
-                        rating={rating}
-                        starDimension="20"
-                        starRatedColor="orange"
-                    />
-                    <h2>${price}</h2>
-                </div>
-            </CardActionArea>
+            <Link to={`/product?id=${props.data.id}`} className={classes.link}>
+                <CardActionArea className={classes.outer}>
+                    <Typography variant="h1" className={classes.name}>
+                        {name}
+                    </Typography>
+                    <Typography variant="h5" color="textSecondary" display="block" className={classes.description}>
+                        {info}
+                    </Typography>
+                    <div>
+                        <StarRatings numberOfStars={5}
+                            name='rating'
+                            rating={rating}
+                            starDimension="20"
+                            starRatedColor="orange"
+                        />
+                        <h2>${price}</h2>
+                    </div>
+                </CardActionArea>
+            </Link>
             <Divider />
         </Card>
     )

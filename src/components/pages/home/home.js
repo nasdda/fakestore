@@ -35,13 +35,23 @@ export default function Home() {
     const items = [
         {
             title: "Welcome!",
-            description: "Please check out the About page located in the sidebar menu at the top left corner to find out what this site is about.",
+            description: "Please check out the About page located in the sidebar menu at the top left corner to find out what this site is about",
             image: "https://images.ctfassets.net/eh05n0xjhplz/1Wcljis3B3iqDgFQnDjxe8/18e0f9ed84b6382ddfaef8de34b6469b/Getting_Started_with_Calendly.jpg",
         },
         {
             title: "Discount Event",
             description: "Enjoy 50% off your first 5 purchaces!",
             image: "https://www.truxxx.com/wp-content/uploads/download-50-off-discount-offer-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-50-Off-PNG-File-Download-Free.png",
+        },
+        {
+            title: "Electronics Section",
+            description: "The Electronics section is now available and could be accessed via the sidebar",
+            image: "https://static.thehoneycombers.com/wp-content/uploads/sites/2/2017/05/electronics-.jpg"
+        },
+        {
+            title: "Clothing & Fashion Section",
+            description: "The new Clothing & Fashion section is now available",
+            image: "https://img5.goodfon.com/wallpaper/nbig/0/4d/odezhda-veshalka-ruka.jpg"
         }
     ]
     return (

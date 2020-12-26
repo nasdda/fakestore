@@ -16,6 +16,7 @@ import Account from '../components/pages/account/account'
 import Balance from '../components/pages/balance/balance'
 import Electronics from '../components/pages/electronics/electronics'
 import ClothingAndFashion from '../components/pages/clothing_and_fashion/clothing_and_fashion'
+import Product from '../components/pages/product/product'
 
 export default function App() {
     return (
@@ -31,6 +32,7 @@ export default function App() {
                 <Route path="/balance" component={Balance} />
                 <Route path="/electronics" component={Electronics} />
                 <Route path="/clothing-and-fashion" component={ClothingAndFashion} />
+                <Route path="/product" component={Product} />
             </Switch>
         </Router>
     );

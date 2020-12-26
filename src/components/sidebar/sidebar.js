@@ -11,7 +11,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import CategoryIcon from '@material-ui/icons/Category';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -112,10 +111,6 @@ export default function Sidebar() {
                             <ListItemText primary="Home" />
                         </ListItem>
                     </NavLink>
-                    <ListItem button key="Filter">
-                        <ListItemIcon><FilterListIcon /></ListItemIcon>
-                        <ListItemText primary="Filter" />
-                    </ListItem>
                     <NavLink to="/electronics" className={classes.link}>
                         <ListItem button key="Electronics">
                             <ListItemIcon><CategoryIcon /></ListItemIcon>

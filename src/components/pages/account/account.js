@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import AccountImage from '../../../images/account.png'
 import {
     Card, makeStyles,
-    IconButton
+    IconButton, Tooltip
 } from '@material-ui/core'
 import {
     selectName, updateName,
@@ -123,18 +123,22 @@ export default function Account() {
             <br />
             <Card variant="outlined" className={classes.profile}>
                 <div className={classes.profileHead}>
-                    <img src={AccountImage} alt="account" className={classes.accountImage} />
-                    <TextareaAutosize
-                        value={username}
-                        className={classes.name}
-                        onChange={event => {
-                            dispatch(updateName({ name: event.target.value }))
-                        }}
-                        onBlur={event => {
-                            dispatch(nameFocusOut())
-                        }}
-                        maxLength={50}
-                    />
+                    <div style={{ width: "100%" }}>
+                        <img src={AccountImage} alt="account" className={classes.accountImage} />
+                    </div>
+                    <Tooltip title="Click to Edit">
+                        <TextareaAutosize
+                            value={username}
+                            className={classes.name}
+                            onChange={event => {
+                                dispatch(updateName({ name: event.target.value }))
+                            }}
+                            onBlur={event => {
+                                dispatch(nameFocusOut())
+                            }}
+                            maxLength={50}
+                        />
+                    </Tooltip>
                 </div>
 
                 <br />
@@ -150,7 +154,7 @@ export default function Account() {
                 </div>
                 <div className={classes.specifics} style={{ textAlign: "left" }}>
                     <div className={classes.info}>
-                        <div style={{ display: "flex", alignItems: "center", maxWidth: "80%" }}>Address:{addressSection}</div>
+                        <div style={{ display: "flex", alignItems: "flex-start", maxWidth: "80%" }}>Address:{addressSection}</div>
                         <IconButton onClick={editHandler}>
                             <EditIcon />
                         </IconButton>
