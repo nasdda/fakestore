@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Carousel from 'react-material-ui-carousel'
 import {
     makeStyles, Divider,
-    Typography, Button
+    Typography, Button,
+    FormControl, Select,
+    InputLabel, MenuItem
 } from '@material-ui/core'
 import StarRatings from 'react-star-ratings'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../../redux/slice/slice'
 
 import { productByID } from '../../../data/product_data'
 
@@ -51,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     pricingInfo: {
         margin: 10,
         display: "flex",
-        alignItems: "center",
+        alignItems: "flex-end",
         justifyContent: "center"
 
     },
@@ -59,17 +63,31 @@ const useStyles = makeStyles(theme => ({
         color: "#545454"
     },
     addButton: {
-        marginLeft: 20,
         background: '#f7c245',
         borderRadius: 3,
         border: 0,
         height: 48,
+        fontSize: "0.9rem",
         padding: '0 30px',
         boxShadow: '0 3px 5px 2px #ffeaba',
         "&:hover": {
             backgroundColor: '#f7c245'
+        },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "0.7rem"
         }
     },
+    formControl: {
+        minWidth: 70,
+        marginLeft: 30,
+        marginRight: 30
+    },
+    price: {
+        fontSize: "1.2rem",
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "1rem"
+        }
+    }
 }))
 
 
@@ -78,7 +96,9 @@ export default function Product(props) {
     const id = parseInt(urlParams.get('id'))
     const product = productByID[id]
     const classes = useStyles()
+    const dispatch = useDispatch()
     const images = product.images.map((image, i) => <img src={image} alt="product" key={i} className={classes.image} />)
+    const [quantity, setQuantity] = useState(1)
     return (
         <div>
             <br />
@@ -102,10 +122,38 @@ export default function Product(props) {
                     </div>
                     <Divider />
                     <div className={classes.pricingInfo}>
-                        <Typography style={{ fontSize: "1.2rem" }}>
+                        <Typography className={classes.price}>
                             Price: ${product.price.toFixed(2)}
                         </Typography>
-                        <Button variant="raised" className={classes.addButton}><b>ADD TO CART</b></Button>
+
+                        <FormControl className={classes.formControl}>
+                            <InputLabel id="quantity-label">Qty.</InputLabel>
+                            <Select
+                                labelId="quantity-label"
+                                id="quantity-select"
+                                value={quantity}
+                                onChange={event => { setQuantity(event.target.value) }}
+                            >
+                                <MenuItem value={1}>1</MenuItem>
+                                <MenuItem value={2}>2</MenuItem>
+                                <MenuItem value={3}>3</MenuItem>
+                                <MenuItem value={4}>4</MenuItem>
+                                <MenuItem value={5}>5</MenuItem>
+                                <MenuItem value={6}>6</MenuItem>
+                                <MenuItem value={7}>7</MenuItem>
+                                <MenuItem value={8}>8</MenuItem>
+                                <MenuItem value={9}>9</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                            </Select>
+                        </FormControl>
+
+                        <Button
+                            variant="outlined"
+                            className={classes.addButton}
+                            onClick={() => {
+                                dispatch(addToCart({ id: id, quantity: quantity }))
+                            }}
+                        ><b>ADD TO CART</b></Button>
                     </div>
                     <Divider />
                     <br />

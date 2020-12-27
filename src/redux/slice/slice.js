@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+let itemCount = 0
 
 export const slice = createSlice({
     name: "main",
@@ -8,7 +9,7 @@ export const slice = createSlice({
         balance: 0,
         name: "Customer",
         address: "783 N. 8th St., The Moon, 97388",
-        cart: new Map()
+        cart: {}
     },
     reducers: {
         toggleDrawer: state => {
@@ -40,17 +41,24 @@ export const slice = createSlice({
             }
         },
         addToCart: (state, action) => {
-            if (state.cart.has(action.payload.id)) {
-                state.cart[action.payload.id]++
+            const newCart = { ...state.cart }
+            if (action.payload.id in newCart) {
+                newCart[action.payload.id] += action.payload.quantity
             } else {
-                state.cart[action.payload.id] = 1
+                newCart[action.payload.id] = action.payload.quantity
+                itemCount++
             }
+            state.cart = newCart
+            console.log(state.cart)
         },
         removeFromCart: (state, action) => {
-            state.cart[action.payload.id]--
-            if (state.cart[action.payload.id] === 0) {
-                state.cart.delete(action.payload.id)
+            const newCart = { ...state.cart }
+            newCart[action.payload.id]--
+            if (newCart[action.payload.id] === 0) {
+                delete newCart[action.payload.id]
+                itemCount--
             }
+            state.cart = newCart
         }
     }
 })
@@ -59,11 +67,13 @@ export const {
     toggleDrawer, updateBalance,
     updateName, nameFocusOut,
     updateAddress, fixAddress,
-    addToCart, removeFromCart } = slice.actions
+    addToCart, removeFromCart
+} = slice.actions
 export const selectOpen = state => state.main.openDrawer
 export const selectBalance = state => state.main.balance
 export const selectName = state => state.main.name
 export const selectAddress = state => state.main.address
 export const selectCard = state => state.main.cart
+export const selectItemCount = state => itemCount
 
 export default slice.reducer

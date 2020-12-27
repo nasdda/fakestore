@@ -8,8 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { useDispatch } from 'react-redux';
-import { toggleDrawer } from '../../redux/slice/slice'
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleDrawer, selectItemCount } from '../../redux/slice/slice'
 import { NavLink } from 'react-router-dom'
 import './navbar.css'
 
@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     },
     menuOuter: {
         width: 130,
+        display: 'flex',
+        alignItems: "center",
+        justifyContent: 'flex-end'
     },
     link: {
         color: "inherit",
@@ -41,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar(props) {
     const classes = useStyles();
     const dispatch = useDispatch()
+    const itemCount = useSelector(selectItemCount)
+
     return (
         <div className={classes.root}>
             <AppBar position={props.position} color="default">
@@ -58,12 +63,15 @@ export default function Navbar(props) {
                         </Typography>
                     </NavLink>
                     <div className={classes.menuOuter}>
-                        <NavLink to='/cart' className={classes.link}>
-                            <IconButton
-                                color="inherit">
-                                <ShoppingCartIcon />
-                            </IconButton>
-                        </NavLink>
+                        <div style={{ display: 'flex', alignItems: "center" }}>
+                            <div >{itemCount}</div>
+                            <NavLink to='/cart' className={classes.link}>
+                                <IconButton
+                                    color="inherit">
+                                    <ShoppingCartIcon />
+                                </IconButton>
+                            </NavLink>
+                        </div>
                         <NavLink to='/account' className={classes.link}>
                             <IconButton
                                 aria-label="account of current user"

@@ -59,7 +59,8 @@ const useStyles = makeStyles((theme) => ({
     link: {
         textDecoration: "none",
         minWidth: 0,
-        color: "inherit"
+        color: "inherit",
+        height: "100%"
     }
 }));
 
