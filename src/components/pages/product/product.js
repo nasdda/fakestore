@@ -24,12 +24,10 @@ const useStyles = makeStyles(theme => ({
     },
     image: {
         width: "100%",
-        height: 400,
-        border: "solid",
-        borderColor: "#001f3f",
-        boxSizing: "border-box",
+        maxHeight: 380,
+        aspectRatio: 3 / 5,
         [theme.breakpoints.down('sm')]: {
-            height: 250
+            maxHeight: 280
         }
     },
     productInfo: {
@@ -87,6 +85,17 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('sm')]: {
             fontSize: "1rem"
         }
+    },
+    imageContainer: {
+        display: "flex",
+        alignItems: "center",
+        border: "solid",
+        borderColor: "#001f3f",
+        boxSizing: "border-box",
+        height: 400,
+        [theme.breakpoints.down('sm')]: {
+            height: 300
+        }
     }
 }))
 
@@ -97,72 +106,78 @@ export default function Product(props) {
     const product = productByID[id]
     const classes = useStyles()
     const dispatch = useDispatch()
-    const images = product.images.map((image, i) => <img src={image} alt="product" key={i} className={classes.image} />)
+    const images = product.images.map((image, i) => <div className={classes.imageContainer}><img src={image} alt="product" key={i} className={classes.image} /></div>)
     const [quantity, setQuantity] = useState(1)
     return (
-        <div>
-            <br />
-            <div className={classes.productInfo}>
-                <Carousel className={classes.imageCarousel}>
-                    {images}
-                </Carousel>
-                <div className={classes.textInfo}>
-                    <h2 className={classes.name}>{product.productName}</h2>
-                    <Divider />
-                    <div className={classes.scoreInfo}>
-                        <div style={{ marginRight: 10 }}>
-                            <StarRatings numberOfStars={5}
-                                name='rating'
-                                rating={product.ratingScore}
-                                starDimension="20"
-                                starRatedColor="orange"
-                            />
+        <React.Fragment>
+            <div>
+                <br />
+                <div className={classes.productInfo}>
+                    <Carousel className={classes.imageCarousel}>
+
+                        {images}
+                    </Carousel>
+                    <div className={classes.textInfo}>
+                        <h2 className={classes.name}>{product.productName}</h2>
+                        <Divider />
+                        <div className={classes.scoreInfo}>
+                            <div style={{ marginRight: 10 }}>
+                                <StarRatings numberOfStars={5}
+                                    name='rating'
+                                    rating={product.ratingScore}
+                                    starDimension="20"
+                                    starRatedColor="orange"
+                                />
+                            </div>
+                            <Typography>{product.ratingScore}/5 | {product.ratingCount} votes</Typography>
                         </div>
-                        <Typography>{product.ratingScore}/5 | {product.ratingCount} votes</Typography>
-                    </div>
-                    <Divider />
-                    <div className={classes.pricingInfo}>
-                        <Typography className={classes.price}>
-                            Price: ${product.price.toFixed(2)}
-                        </Typography>
+                        <Divider />
+                        <div className={classes.pricingInfo}>
+                            <Typography className={classes.price}>
+                                Price: ${product.price.toFixed(2)}
+                            </Typography>
 
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="quantity-label">Qty.</InputLabel>
-                            <Select
-                                labelId="quantity-label"
-                                id="quantity-select"
-                                value={quantity}
-                                onChange={event => { setQuantity(event.target.value) }}
-                            >
-                                <MenuItem value={1}>1</MenuItem>
-                                <MenuItem value={2}>2</MenuItem>
-                                <MenuItem value={3}>3</MenuItem>
-                                <MenuItem value={4}>4</MenuItem>
-                                <MenuItem value={5}>5</MenuItem>
-                                <MenuItem value={6}>6</MenuItem>
-                                <MenuItem value={7}>7</MenuItem>
-                                <MenuItem value={8}>8</MenuItem>
-                                <MenuItem value={9}>9</MenuItem>
-                                <MenuItem value={10}>10</MenuItem>
-                            </Select>
-                        </FormControl>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel id="quantity-label">Qty.</InputLabel>
+                                <Select
+                                    labelId="quantity-label"
+                                    id="quantity-select"
+                                    value={quantity}
+                                    onChange={event => { setQuantity(event.target.value) }}
+                                >
+                                    <MenuItem value={1}>1</MenuItem>
+                                    <MenuItem value={2}>2</MenuItem>
+                                    <MenuItem value={3}>3</MenuItem>
+                                    <MenuItem value={4}>4</MenuItem>
+                                    <MenuItem value={5}>5</MenuItem>
+                                    <MenuItem value={6}>6</MenuItem>
+                                    <MenuItem value={7}>7</MenuItem>
+                                    <MenuItem value={8}>8</MenuItem>
+                                    <MenuItem value={9}>9</MenuItem>
+                                    <MenuItem value={10}>10</MenuItem>
+                                </Select>
+                            </FormControl>
 
-                        <Button
-                            variant="outlined"
-                            className={classes.addButton}
-                            onClick={() => {
-                                dispatch(addToCart({ id: id, quantity: quantity }))
-                            }}
-                        ><b>ADD TO CART</b></Button>
-                    </div>
-                    <Divider />
-                    <br />
-                    <div className={classes.descriptionInfo}>
-                        {product.description}
+                            <Button
+                                variant="outlined"
+                                className={classes.addButton}
+                                onClick={() => {
+                                    dispatch(addToCart({ id: id, quantity: quantity }))
+                                }}
+                            ><b>ADD TO CART</b></Button>
+                        </div>
+                        <Divider />
+                        <br />
+                        <div className={classes.descriptionInfo}>
+                            {product.description}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div>Actual Product: <a target="_blank" rel="noreferrer" href={product.link}>{product.link}</a></div>
-        </div>
+            <footer style={{marginTop: 100}}>
+                Actual Product: <a target="_blank" rel="noreferrer" href={product.link}>{product.link}</a>
+            </footer>
+        </React.Fragment>
+
     )
 }

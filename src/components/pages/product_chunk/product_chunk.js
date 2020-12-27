@@ -37,12 +37,13 @@ const useStyles = makeStyles((theme) => ({
         padding: 10
     },
     image: {
-        height: "70%",
-        width: 150,
+        height: undefined,
+        width: "100%",
+        aspectRatio: 3 / 5,
+        maxHeight: 230,
         [theme.breakpoints.down('sm')]: {
-            height: "60%"
-        },
-        margin: 10
+            maxHeight: 250
+        }
     },
     name: {
         display: "block",
@@ -61,6 +62,13 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 0,
         color: "inherit",
         height: "100%"
+    },
+    imageOuter: {
+        minWidth: 200,
+        maxWidth: 200,
+        display: "flex",
+        alignItems: "flex-end",
+        height: "100%",
     }
 }));
 
@@ -73,7 +81,9 @@ export default function ProductChunk(props) {
 
     return (
         <Card className={classes.root} variant="outlined">
-            <img src={props.data.images[0]} alt="product" className={classes.image} />
+            <div className={classes.imageOuter}>
+                <img src={props.data.images[0]} alt="product" className={classes.image} />
+            </div>
             <Link to={`/product?id=${props.data.id}`} className={classes.link}>
                 <CardActionArea className={classes.outer}>
                     <Typography variant="h1" className={classes.name}>
