@@ -10,6 +10,7 @@ import {
 import StarRatings from 'react-star-ratings'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../../redux/slice/slice'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { productByID } from '../../../data/product_data'
 
@@ -54,8 +55,12 @@ const useStyles = makeStyles(theme => ({
         margin: 10,
         display: "flex",
         alignItems: "flex-end",
-        justifyContent: "center"
-
+        justifyContent: "center",
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center"
+        }
     },
     descriptionInfo: {
         color: "#545454"
@@ -67,12 +72,14 @@ const useStyles = makeStyles(theme => ({
         height: 48,
         fontSize: "0.9rem",
         padding: '0 30px',
-        boxShadow: '0 3px 5px 2px #ffeaba',
         "&:hover": {
-            backgroundColor: '#f7c245'
+            backgroundColor: '#ffe675'
         },
         [theme.breakpoints.down('sm')]: {
             fontSize: "0.7rem"
+        },
+        [theme.breakpoints.down('xs')]: {
+            marginTop: 10
         }
     },
     formControl: {
@@ -106,11 +113,12 @@ export default function Product(props) {
     const product = productByID[id]
     const classes = useStyles()
     const dispatch = useDispatch()
-    const images = product.images.map((image, i) => <div className={classes.imageContainer}><img src={image} alt="product" key={i} className={classes.image} /></div>)
+    const images = product.images.map((image, i) => <div className={classes.imageContainer} key={i}><img src={image} alt="product" className={classes.image} /></div>)
     const [quantity, setQuantity] = useState(1)
+
     return (
         <React.Fragment>
-            <div>
+            <div style={{ position: "relative", minHeight: "80vh" }}>
                 <br />
                 <div className={classes.productInfo}>
                     <Carousel className={classes.imageCarousel}>
@@ -174,7 +182,11 @@ export default function Product(props) {
                     </div>
                 </div>
             </div>
-            <footer style={{marginTop: 100}}>
+            <footer style={{
+                bottom: 0,
+                width: "100%",
+                height: "1rem"
+            }}>
                 Actual Product: <a target="_blank" rel="noreferrer" href={product.link}>{product.link}</a>
             </footer>
         </React.Fragment>

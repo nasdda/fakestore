@@ -11,14 +11,12 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
         alignItems: "center",
-        height: 230,
+        height: 300,
         width: 900,
         [theme.breakpoints.down('sm')]: {
-            height: 250,
             width: 600
         },
         [theme.breakpoints.down('xs')]: {
-            height: 250,
             width: "100%"
         },
         marginLeft: "auto",
@@ -40,10 +38,7 @@ const useStyles = makeStyles((theme) => ({
         height: undefined,
         width: "100%",
         aspectRatio: 3 / 5,
-        maxHeight: 230,
-        [theme.breakpoints.down('sm')]: {
-            maxHeight: 250
-        }
+        maxHeight: 300,
     },
     name: {
         display: "block",
@@ -67,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 200,
         maxWidth: 200,
         display: "flex",
-        alignItems: "flex-end",
+        alignItems: "center",
         height: "100%",
     }
 }));

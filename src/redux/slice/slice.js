@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify'
 
 let itemCount = 0
 
@@ -41,22 +42,44 @@ export const slice = createSlice({
             }
         },
         addToCart: (state, action) => {
+            if (itemCount + action.payload.quantity > 100) {
+                alert("Cart limit exceeded. You may only have up to 100 items in the cart at once.")
+                return
+            }
             const newCart = { ...state.cart }
             if (action.payload.id in newCart) {
                 newCart[action.payload.id] += action.payload.quantity
             } else {
                 newCart[action.payload.id] = action.payload.quantity
-                itemCount++
             }
             state.cart = newCart
-            console.log(state.cart)
+            itemCount += action.payload.quantity
+            toast.dark("Added to cart")
         },
         removeFromCart: (state, action) => {
             const newCart = { ...state.cart }
-            newCart[action.payload.id]--
-            if (newCart[action.payload.id] === 0) {
+            newCart[action.payload.id] -= action.payload.quantity
+            if (newCart[action.payload.id] <= 0) {
                 delete newCart[action.payload.id]
-                itemCount--
+            }
+            state.cart = newCart
+            itemCount -= action.payload.quantity
+        },
+        clearCart: (state) => {
+            state.cart = {}
+            itemCount = 0
+            alert("order placed")
+        },
+        changeQuantity: (state, action) => {
+            if (itemCount + action.payload.amount > 100) {
+                alert("Cart limit exceeded. You may only have up to 100 items in the cart at once.")
+                return
+            }
+            itemCount += action.payload.amount
+            const newCart = { ...state.cart }
+            newCart[action.payload.id] += action.payload.amount
+            if (newCart[action.payload.id] <= 0) {
+                delete newCart[action.payload.id]
             }
             state.cart = newCart
         }
@@ -67,13 +90,14 @@ export const {
     toggleDrawer, updateBalance,
     updateName, nameFocusOut,
     updateAddress, fixAddress,
-    addToCart, removeFromCart
+    addToCart, removeFromCart,
+    clearCart, changeQuantity
 } = slice.actions
 export const selectOpen = state => state.main.openDrawer
 export const selectBalance = state => state.main.balance
 export const selectName = state => state.main.name
 export const selectAddress = state => state.main.address
-export const selectCard = state => state.main.cart
+export const selectCart = state => state.main.cart
 export const selectItemCount = state => itemCount
 
 export default slice.reducer

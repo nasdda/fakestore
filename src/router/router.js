@@ -17,6 +17,7 @@ import Balance from '../components/pages/balance/balance'
 import Electronics from '../components/pages/electronics/electronics'
 import ClothingAndFashion from '../components/pages/clothing_and_fashion/clothing_and_fashion'
 import Product from '../components/pages/product/product'
+import { ToastContainer } from 'react-toastify'
 
 export default function App() {
     return (
@@ -24,6 +25,11 @@ export default function App() {
             <Navbar position="relative" />
             <Navbar position="fixed" />
             <Sidebar />
+            <ToastContainer
+                position="bottom-right"
+                pauseOnHover={false}
+                autoClose={3000}
+            />
             <Switch>
                 <Route path="/" component={Home} exact={true} />
                 <Route path="/about" component={About} />

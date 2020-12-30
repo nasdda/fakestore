@@ -19,6 +19,7 @@
     "react-simple-image-slider": "^2.0.1",
     "react-star-ratings": "^2.3.0",
     "react-textarea-autosize": "^8.3.0",
+    "react-toastify": "^6.2.0",
     "validator": "^13.5.2"
   },
   "scripts": {
