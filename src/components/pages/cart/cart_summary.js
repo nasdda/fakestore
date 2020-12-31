@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { selectCart, clearCart, changeQuantity } from '../../../redux/slice/slice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,6 +9,7 @@ import {
     Card, makeStyles,
     Button
 } from '@material-ui/core'
+import Loader from '../../loader/loader'
 
 
 const useStyles = makeStyles(theme => ({
@@ -73,9 +74,14 @@ export default function CartSummary() {
     let subtotal = 0
     const classes = useStyles()
     let items = []
+    const [placingOrder, setPlacingOrder] = useState(false)
     const change = (item_id, amount) => {
         dispatch(changeQuantity({ id: item_id, amount: amount }))
     }
+    const remove = (item_id) => {
+        dispatch(changeQuantity({ id: item_id, amount: -cart[item_id] }))
+    }
+
     for (const id in cart) {
         if (cart[id] > 0) {
             subtotal += productByID[id].price * cart[id]
@@ -85,6 +91,7 @@ export default function CartSummary() {
                 id={id}
                 qty={cart[id]}
                 change={change}
+                remove={remove}
                 key={items.length} />)
         }
     }
@@ -96,29 +103,37 @@ export default function CartSummary() {
     let taxes = 0.093 * subtotal
     taxes = Math.round(taxes * 100) / 100
     subtotal = Math.round(subtotal * 100) / 100
-
     const total = subtotal + taxes
 
     return (
         <React.Fragment>
-            <div className={classes.root}>
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet" />
-                <Card variant="outlined" className={classes.items}>
-                    {items}
-                </Card>
-                {subtotal !== 0 ?
-                    <Card variant="outlined" className={classes.summary}>
-                        <p>Subtotal: $ {subtotal.toFixed(2)}</p>
-                        <p>Taxes: $ {taxes.toFixed(2)}</p>
-                        <p>Total: $ {total.toFixed(2)}</p>
-                        <Button
-                            className={classes.orderButton}
-                            onClick={event => dispatch(clearCart())}><b>Place Order</b></Button>
+            {placingOrder ? <Loader /> :
+                <div className={classes.root}>
+                    <link rel="preconnect" href="https://fonts.gstatic.com" />
+                    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet" />
+                    <Card variant="outlined" className={classes.items}>
+                        {items}
                     </Card>
-                    : <div></div>
-                }
-            </div>
+                    {subtotal !== 0 ?
+                        <Card variant="outlined" className={classes.summary}>
+                            <p>Subtotal: $ {subtotal.toFixed(2)}</p>
+                            <p>Taxes: $ {taxes.toFixed(2)}</p>
+                            <p>Total: $ {total.toFixed(2)}</p>
+                            <Button
+                                className={classes.orderButton}
+                                onClick={event => {
+                                    setPlacingOrder(true)
+                                    setTimeout(() => {
+                                        dispatch(clearCart())
+                                        setPlacingOrder(false)
+                                    }, 3000)
+                                }}>
+                                <b>Place Order</b></Button>
+                        </Card>
+                        : <div></div>
+                    }
+                </div>
+            }
         </React.Fragment>
 
 

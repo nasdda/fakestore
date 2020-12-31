@@ -68,7 +68,7 @@ export const slice = createSlice({
         clearCart: (state) => {
             state.cart = {}
             itemCount = 0
-            alert("order placed")
+            toast.dark("Order placed")
         },
         changeQuantity: (state, action) => {
             if (itemCount + action.payload.amount > 100) {
@@ -82,6 +82,7 @@ export const slice = createSlice({
                 delete newCart[action.payload.id]
             }
             state.cart = newCart
+            // TODO: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
         }
     }
 })

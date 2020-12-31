@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function CartItem(props) {
+function CartItem(props) {
     const classes = useStyles()
     return (
         <Card className={classes.root} variant="outlined">
@@ -79,10 +79,15 @@ export default function CartItem(props) {
                     <AddIcon />
                 </IconButton>
                 <Divider orientation="vertical" />
-                <IconButton className={classes.removeButton}>
+                <IconButton className={classes.removeButton} onClick={event => props.remove(props.id)}>
                     <HighlightOffIcon style={{ color: "red" }} />
                 </IconButton>
             </div>
         </Card>
     )
 }
+
+export default React.memo(CartItem, (prevProps, nextProps) => {
+    if (prevProps.qty === nextProps.qty) return true
+    return false
+})
