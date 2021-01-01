@@ -55,7 +55,7 @@ export default function Navbar(props) {
             <AppBar position={props.position} color="default">
                 <Toolbar>
                     <div className={classes.menuOuter}>
-                        <IconButton>
+                        <IconButton onClick={() => window.history.back()}>
                             <DoubleArrowIcon className={classes.backButton} />
                         </IconButton>
                         <Tooltip title="Show Sidebar">
