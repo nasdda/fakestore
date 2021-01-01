@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDrawer, selectItemCount } from '../../redux/slice/slice'
@@ -38,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
         color: "inherit",
         textDecoration: 'none',
     },
+    backButton: {
+        transform: "rotate(-180deg)"
+    },
     offset: theme.mixins.toolbar,
 }));
 
@@ -51,8 +55,11 @@ export default function Navbar(props) {
             <AppBar position={props.position} color="default">
                 <Toolbar>
                     <div className={classes.menuOuter}>
+                        <IconButton>
+                            <DoubleArrowIcon className={classes.backButton} />
+                        </IconButton>
                         <Tooltip title="Show Sidebar">
-                            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => dispatch(toggleDrawer())}>
+                            <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => dispatch(toggleDrawer())}>
                                 <MenuIcon />
                             </IconButton>
                         </Tooltip>

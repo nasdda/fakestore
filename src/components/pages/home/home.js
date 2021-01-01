@@ -131,8 +131,8 @@ export default function Home() {
                 <Link to="/electronics">
                     <div className={classes.container}>
                         <img
-                            src="https://static.thehoneycombers.com/wp-content/uploads/sites/2/2017/05/electronics-.jpg"
-                            alt="bg"
+                            src="https://univers-technologues.com/wp-content/uploads/2018/06/Gadgets-Latest-Electronic-Gadgets.jpg"
+                            alt="electronics"
                             className={classes.a}
                         />
                         <div className={classes.centered}>Electronics</div>
@@ -147,8 +147,8 @@ export default function Home() {
                 <Link to="/clothing-and-fashion">
                     <div className={classes.container}>
                         <img
-                            src="https://img5.goodfon.com/wallpaper/nbig/0/4d/odezhda-veshalka-ruka.jpg"
-                            alt="bg"
+                            src="https://wtvox.com/wtvox2/wp-content/uploads/2018/07/Feature.jpg"
+                            alt="clothing and fashion"
                             className={classes.a}
                         />
                         <div className={classes.centered}>Clothing & Fashion</div>
