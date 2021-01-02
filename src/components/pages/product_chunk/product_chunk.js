@@ -92,7 +92,7 @@ export default function ProductChunk(props) {
         <Card className={classes.root} variant="outlined">
 
             <div className={classes.imageOuter}>
-                <Link to={`/product?id=${props.data.id}`} className={classes.link}>
+                <Link to={`/product?id=${props.data.id}`}>
                     <img src={props.data.images[0]} alt="product" className={classes.image} />
                 </Link>
             </div>
