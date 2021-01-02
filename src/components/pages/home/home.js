@@ -105,11 +105,6 @@ export default function Home() {
             image: "https://images.ctfassets.net/eh05n0xjhplz/1Wcljis3B3iqDgFQnDjxe8/18e0f9ed84b6382ddfaef8de34b6469b/Getting_Started_with_Calendly.jpg",
         },
         {
-            title: "Discount Event",
-            description: "Enjoy 50% off your first 5 purchaces!",
-            image: "https://www.truxxx.com/wp-content/uploads/download-50-off-discount-offer-PNG-transparent-images-transparent-backgrounds-PNGRIVER-COM-50-Off-PNG-File-Download-Free.png",
-        },
-        {
             title: "Electronics Section",
             description: "The Electronics section is now available",
             image: "https://static.thehoneycombers.com/wp-content/uploads/sites/2/2017/05/electronics-.jpg"
