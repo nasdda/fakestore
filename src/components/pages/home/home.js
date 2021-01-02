@@ -128,8 +128,9 @@ export default function Home() {
             </Carousel>
 
             <div className={classes.nav}>
-                <Link to="/electronics">
-                    <div className={classes.container}>
+
+                <div className={classes.container}>
+                    <Link to="/electronics">
                         <img
                             src="https://univers-technologues.com/wp-content/uploads/2018/06/Gadgets-Latest-Electronic-Gadgets.jpg"
                             alt="electronics"
@@ -141,11 +142,12 @@ export default function Home() {
                             alt="out"
                             className={classes.arrowLeft}
                         />
-                    </div>
-                </Link>
+                    </Link>
+                </div>
 
-                <Link to="/clothing-and-fashion">
-                    <div className={classes.container}>
+
+                <div className={classes.container}>
+                    <Link to="/clothing-and-fashion">
                         <img
                             src="https://wtvox.com/wtvox2/wp-content/uploads/2018/07/Feature.jpg"
                             alt="clothing and fashion"
@@ -157,8 +159,9 @@ export default function Home() {
                             alt="out"
                             className={classes.arrowRight}
                         />
-                    </div>
-                </Link>
+                    </Link>
+                </div>
+
             </div>
         </React.Fragment>
     )

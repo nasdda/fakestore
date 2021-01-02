@@ -39,6 +39,12 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         aspectRatio: 3 / 5,
         maxHeight: 300,
+        [theme.breakpoints.down('sm')]: {
+            maxHeight: 250
+        },
+        [theme.breakpoints.down('xs')]: {
+            maxHeight: 160
+        }
     },
     name: {
         display: "block",
@@ -64,6 +70,14 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         alignItems: "center",
         height: "100%",
+        [theme.breakpoints.down('sm')]: {
+            minWidth: 150,
+            maxWidth: 150,
+        },
+        [theme.breakpoints.down('xs')]: {
+            minWidth: 100,
+            maxWidth: 100,
+        }
     }
 }));
 
@@ -76,8 +90,11 @@ export default function ProductChunk(props) {
 
     return (
         <Card className={classes.root} variant="outlined">
+
             <div className={classes.imageOuter}>
-                <img src={props.data.images[0]} alt="product" className={classes.image} />
+                <Link to={`/product?id=${props.data.id}`} className={classes.link}>
+                    <img src={props.data.images[0]} alt="product" className={classes.image} />
+                </Link>
             </div>
             <Link to={`/product?id=${props.data.id}`} className={classes.link}>
                 <CardActionArea className={classes.outer}>
@@ -99,6 +116,6 @@ export default function ProductChunk(props) {
                 </CardActionArea>
             </Link>
             <Divider />
-        </Card>
+        </Card >
     )
 }
