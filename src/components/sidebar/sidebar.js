@@ -1,5 +1,5 @@
 import React from 'react'
-import { selectOpen, toggleDrawer } from '../../redux/slice/slice'
+import { selectOpen, toggleDrawer, closeDrawer } from '../../redux/slice/slice'
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core'
 import Tooltip from '@material-ui/core/Tooltip'
@@ -85,6 +85,9 @@ export default function Sidebar() {
     const classes = useStyles()
     const dispatch = useDispatch()
     const open = useSelector(selectOpen)
+    const handleClick = event => {
+        dispatch(closeDrawer())
+    }
     return (
         <div>
             <Drawer
@@ -105,19 +108,19 @@ export default function Sidebar() {
                 </div>
                 <Divider />
                 <List>
-                    <NavLink to="/" className={classes.link}>
+                    <NavLink to="/" className={classes.link} onClick={handleClick}>
                         <ListItem button key="Home">
                             <ListItemIcon><HomeIcon /></ListItemIcon>
                             <ListItemText primary="Home" />
                         </ListItem>
                     </NavLink>
-                    <NavLink to="/electronics" className={classes.link}>
+                    <NavLink to="/electronics" className={classes.link} onClick={handleClick}>
                         <ListItem button key="Electronics">
                             <ListItemIcon><CategoryIcon /></ListItemIcon>
                             <ListItemText primary="Electronics" />
                         </ListItem>
                     </NavLink>
-                    <NavLink to="/clothing-and-fashion" className={classes.link}>
+                    <NavLink to="/clothing-and-fashion" className={classes.link} onClick={handleClick}>
                         <ListItem button key="Clothing & Fashion">
                             <ListItemIcon><CategoryIcon /></ListItemIcon>
                             <ListItemText primary="Clothing & Fashion" />
@@ -126,13 +129,13 @@ export default function Sidebar() {
                 </List>
                 <Divider />
                 <List>
-                    <NavLink to='/account' className={classes.link}>
+                    <NavLink to='/account' className={classes.link} onClick={handleClick}>
                         <ListItem button key="Account">
                             <ListItemIcon><AccountCircleIcon /></ListItemIcon>
                             <ListItemText primary="Account" />
                         </ListItem>
                     </NavLink>
-                    <NavLink to='/balance' className={classes.link}>
+                    <NavLink to='/balance' className={classes.link} onClick={handleClick}>
                         <ListItem button key="Balance">
                             <ListItemIcon><AttachMoneyIcon /></ListItemIcon>
                             <ListItemText primary="Balance" />
@@ -141,7 +144,7 @@ export default function Sidebar() {
                 </List>
                 <Divider />
                 <List>
-                    <NavLink to='/about' className={classes.link}>
+                    <NavLink to='/about' className={classes.link} onClick={handleClick}>
                         <ListItem button key="About">
                             <ListItemIcon><InfoIcon /></ListItemIcon>
                             <ListItemText primary="About" />

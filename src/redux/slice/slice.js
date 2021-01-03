@@ -16,6 +16,9 @@ export const slice = createSlice({
         toggleDrawer: state => {
             state.openDrawer = !state.openDrawer
         },
+        closeDrawer: state => {
+            state.openDrawer = false
+        },
         updateBalance: (state, action) => {
             state.balance += action.payload.amount
             if (state.balance > 1000000) {
@@ -91,7 +94,8 @@ export const {
     updateName, nameFocusOut,
     updateAddress, fixAddress,
     addToCart, removeFromCart,
-    clearCart, changeQuantity
+    clearCart, changeQuantity,
+    closeDrawer
 } = slice.actions
 export const selectOpen = state => state.main.openDrawer
 export const selectBalance = state => state.main.balance
