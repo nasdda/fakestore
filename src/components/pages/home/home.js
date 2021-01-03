@@ -6,6 +6,8 @@ import {
 } from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
 import { Link } from 'react-router-dom'
+import { closeDrawer } from '../../../redux/slice/slice'
+import { useDispatch } from 'react-redux'
 
 
 
@@ -98,6 +100,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const handleClick = event => {
+        dispatch(closeDrawer())
+    }
     const items = [
         {
             title: "Welcome!",
@@ -125,7 +131,7 @@ export default function Home() {
             <div className={classes.nav}>
 
                 <div className={classes.container}>
-                    <Link to="/electronics">
+                    <Link to="/electronics" onClick={handleClick}>
                         <img
                             src="https://univers-technologues.com/wp-content/uploads/2018/06/Gadgets-Latest-Electronic-Gadgets.jpg"
                             alt="electronics"
@@ -141,7 +147,7 @@ export default function Home() {
                 </div>
 
 
-                <div className={classes.container}>
+                <div className={classes.container} onClick={handleClick}>
                     <Link to="/clothing-and-fashion">
                         <img
                             src="https://wtvox.com/wtvox2/wp-content/uploads/2018/07/Feature.jpg"

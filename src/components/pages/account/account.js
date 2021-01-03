@@ -114,6 +114,12 @@ export default function Account() {
                         setEdit(false)
                     }
                 }}
+                onKeyPress={(event) => {
+                    if (event.key === 'Enter') {
+                        dispatch(fixAddress())
+                        setEdit(false)
+                    }
+                }}
             />
         )
     }
