@@ -1,7 +1,7 @@
 import React from 'react'
 import {
-    Typography, makeStyles, Card,
-    Divider, CardActionArea,
+    Typography, makeStyles,
+    Card, CardActionArea,
 } from '@material-ui/core'
 import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom'
@@ -11,18 +11,18 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
         alignItems: "center",
-        height: 300,
-        width: 900,
+        height: "18rem",
+        width: "60rem",
         [theme.breakpoints.down('sm')]: {
-            width: 600
+            width: "35rem"
         },
         [theme.breakpoints.down('xs')]: {
             width: "100%"
         },
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: 30,
-        marginBottom: 30,
+        marginTop: "2rem",
+        marginBottom: "2rem",
     },
     outer: {
         width: "100%",
@@ -32,18 +32,18 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "space-between",
         minWidth: 0,
-        padding: 10
+        padding: "0.8rem"
     },
     image: {
         height: undefined,
         width: "100%",
         aspectRatio: 3 / 5,
-        maxHeight: 300,
+        maxHeight: "17rem",
         [theme.breakpoints.down('sm')]: {
-            maxHeight: 250
+            maxHeight: "15rem"
         },
         [theme.breakpoints.down('xs')]: {
-            maxHeight: 160
+            maxHeight: "13rem"
         }
     },
     name: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
         height: "2em"
     },
     description: {
-        maxHeight: 80,
+        maxHeight: "6rem",
         overflow: "hidden"
     },
     link: {
@@ -65,18 +65,18 @@ const useStyles = makeStyles((theme) => ({
         height: "100%"
     },
     imageOuter: {
-        minWidth: 200,
-        maxWidth: 200,
+        minWidth: "13rem",
+        maxWidth: "13rem",
         display: "flex",
         alignItems: "center",
         height: "100%",
         [theme.breakpoints.down('sm')]: {
-            minWidth: 150,
-            maxWidth: 150,
+            minWidth: "10rem",
+            maxWidth: "10rem",
         },
         [theme.breakpoints.down('xs')]: {
-            minWidth: 100,
-            maxWidth: 100,
+            minWidth: "8rem",
+            maxWidth: "8rem",
         }
     }
 }));
@@ -108,14 +108,13 @@ export default function ProductChunk(props) {
                         <StarRatings numberOfStars={5}
                             name='rating'
                             rating={rating}
-                            starDimension="20"
+                            starDimension="1.3rem"
                             starRatedColor="orange"
                         />
                         <h2>${price}</h2>
                     </div>
                 </CardActionArea>
             </Link>
-            <Divider />
-        </Card >
+        </Card>
     )
 }

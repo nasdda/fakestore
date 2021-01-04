@@ -11,7 +11,7 @@ import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDrawer, selectItemCount, closeDrawer } from '../../redux/slice/slice'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import './navbar.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex"
     },
     menuOuter: {
-        width: 130,
+        width: "8rem",
         display: 'flex',
         alignItems: "center",
         justifyContent: 'flex-end'
@@ -50,6 +50,8 @@ export default function Navbar(props) {
     const dispatch = useDispatch()
     const itemCount = useSelector(selectItemCount)
 
+    const history = useHistory()
+
     const handleClick = event => {
         dispatch(closeDrawer())
     }
@@ -59,7 +61,10 @@ export default function Navbar(props) {
             <AppBar position={props.position} color="default">
                 <Toolbar>
                     <div className={classes.menuOuter}>
-                        <IconButton onClick={() => window.history.back()}>
+                        <IconButton onClick={() => {
+                            console.log(history)
+                            history.goBack()
+                        }}>
                             <DoubleArrowIcon className={classes.backButton} />
                         </IconButton>
                         <Tooltip title="Show Sidebar">

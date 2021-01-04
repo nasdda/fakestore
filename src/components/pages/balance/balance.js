@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     },
     rechargeForm: {
         margin: theme.spacing(5),
-        width: 300,
+        width: "18rem",
     },
     card: {
-        width: 600,
-        height: 200,
+        width: "40rem",
+        height: "12rem",
         margin: "auto",
         display: "flex",
         alignItems: "center",

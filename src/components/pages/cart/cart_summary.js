@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
-import { selectCart, clearCart, changeQuantity } from '../../../redux/slice/slice'
+import {
+    selectCart, clearCart,
+    changeQuantity, selectBalance,
+    updateBalance
+} from '../../../redux/slice/slice'
 import { useDispatch, useSelector } from 'react-redux'
 import { productByID } from '../../../data/product_data'
 
@@ -10,6 +14,7 @@ import {
     Button
 } from '@material-ui/core'
 import Loader from '../../loader/loader'
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
@@ -17,7 +22,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         width: "100%",
         justifyContent: "center",
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
             flexDirection: "column",
             alignItems: "center"
         }
@@ -27,11 +32,12 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         alignItems: "flex-start",
         width: "20%",
-        minWidth: 250,
-        height: 300,
-        padding: 30,
-        [theme.breakpoints.down('xs')]: {
-            width: "90%"
+        minWidth: "20rem",
+        height: "20rem",
+        padding: "2rem",
+        boxSizing: "border-box",
+        [theme.breakpoints.down('sm')]: {
+            width: "100%"
         },
         boxShadow: "0 6px 6px rgba(0,0,0,0.15)"
     },
@@ -39,7 +45,7 @@ const useStyles = makeStyles(theme => ({
         background: '#f7c245',
         borderRadius: 3,
         border: 0,
-        height: 48,
+        height: "3rem",
         fontSize: "0.9rem",
         "&:hover": {
             backgroundColor: '#ffe675'
@@ -53,26 +59,26 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         justifyContent: "center",
         width: "60%",
-        marginRight: 30,
-        minHeight: 200,
-        minWidth: 400,
+        marginRight: "2rem",
+        minHeight: "15rem",
+        minWidth: "30rem",
         boxShadow: "2px 6px 6px rgba(0,0,0,0.15)",
         boxSizing: "border-box",
         [theme.breakpoints.down('sm')]: {
-            marginRight: 10
-        },
-        [theme.breakpoints.down('xs')]: {
             width: "90%",
             marginRight: 0
         },
+
     }
 }))
 
 export default function CartSummary() {
     const dispatch = useDispatch()
     const cart = useSelector(selectCart)
+    const balance = useSelector(selectBalance)
     let subtotal = 0
     const classes = useStyles()
+    const history = useHistory()
     let items = []
     const [placingOrder, setPlacingOrder] = useState(false)
     const change = (item_id, amount) => {
@@ -122,11 +128,17 @@ export default function CartSummary() {
                             <Button
                                 className={classes.orderButton}
                                 onClick={event => {
-                                    setPlacingOrder(true)
-                                    setTimeout(() => {
-                                        dispatch(clearCart())
-                                        setPlacingOrder(false)
-                                    }, 3000)
+                                    if (balance < total) {
+                                        alert("Insufficient balance. Please recharge.")
+                                        history.push("/balance")
+                                    } else {
+                                        setPlacingOrder(true)
+                                        setTimeout(() => {
+                                            dispatch(updateBalance({ amount: -total }))
+                                            dispatch(clearCart())
+                                            setPlacingOrder(false)
+                                        }, 3000)
+                                    }
                                 }}>
                                 <b>Place Order</b></Button>
                         </Card>

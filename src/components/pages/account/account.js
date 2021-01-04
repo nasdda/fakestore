@@ -21,21 +21,21 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 const useStyles = makeStyles(theme => ({
     accountImage: {
-        width: 200,
-        height: 200,
+        width: "13rem",
+        height: "13rem",
         [theme.breakpoints.down('xs')]: {
-            width: 150,
-            height: 150
+            width: "10rem",
+            height: "10rem"
         },
     },
     profile: {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        height: 500,
-        width: 350,
+        height: "30rem",
+        width: "23rem",
         margin: "auto",
-        padding: 15,
+        padding: "1rem",
         [theme.breakpoints.down('xs')]: {
             width: "100%",
             padding: 0,
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
         maxWidth: "80%",
         marginLeft: "auto",
         marginRight: "auto",
-        marginBottom: 10,
+        marginBottom: "0.8rem",
         resize: "none",
     },
     info: {
@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
     edit: {
         border: "none",
         resize: "none",
-        marginLeft: 10,
+        marginLeft: "0.8rem",
         fontFamily: "inherit",
         fontSize: "inherit",
     }
@@ -98,7 +98,7 @@ export default function Account() {
     }
 
     let addressSection = (
-        <div style={{ marginLeft: 10, wordBreak: "break-word" }}>{userAddress}</div>
+        <div style={{ marginLeft: "0.8rem", wordBreak: "break-word" }}>{userAddress}</div>
     )
 
     if (edit) {
@@ -120,6 +120,7 @@ export default function Account() {
                         setEdit(false)
                     }
                 }}
+                maxLength={80}
             />
         )
     }

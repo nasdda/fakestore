@@ -16,19 +16,19 @@ import { productByID } from '../../../data/product_data'
 
 const useStyles = makeStyles(theme => ({
     imageCarousel: {
-        width: 300,
-        height: 500,
+        width: "20rem",
+        height: "30rem",
         [theme.breakpoints.down('sm')]: {
-            height: 350,
-            width: 200
+            height: "25rem",
+            width: "13rem"
         }
     },
     image: {
         width: "100%",
-        maxHeight: 380,
+        maxHeight: "24rem",
         aspectRatio: 3 / 5,
         [theme.breakpoints.down('sm')]: {
-            maxHeight: 280
+            maxHeight: "18rem"
         }
     },
     productInfo: {
@@ -37,8 +37,8 @@ const useStyles = makeStyles(theme => ({
     },
     textInfo: {
         width: "50%",
-        marginLeft: 10,
-        marginRight: 10
+        marginLeft: "0.7rem",
+        marginRight: "0.7rem"
     },
     name: {
         fontSize: "1.3rem",
@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center"
     },
     pricingInfo: {
-        margin: 10,
+        margin: "0.7rem",
         display: "flex",
         alignItems: "flex-end",
         justifyContent: "center",
@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
         background: '#f7c245',
         borderRadius: 3,
         border: 0,
-        height: 48,
+        height: "3rem",
         fontSize: "0.9rem",
         padding: '0 30px',
         "&:hover": {
@@ -79,13 +79,13 @@ const useStyles = makeStyles(theme => ({
             fontSize: "0.7rem"
         },
         [theme.breakpoints.down('xs')]: {
-            marginTop: 10
+            marginTop: "0.7rem"
         }
     },
     formControl: {
-        minWidth: 70,
-        marginLeft: 30,
-        marginRight: 30
+        minWidth: "4rem",
+        marginLeft: "1.5rem",
+        marginRight: "1.5rem"
     },
     price: {
         fontSize: "1.2rem",
@@ -99,9 +99,9 @@ const useStyles = makeStyles(theme => ({
         border: "solid",
         borderColor: "#001f3f",
         boxSizing: "border-box",
-        height: 400,
+        height: "25rem",
         [theme.breakpoints.down('sm')]: {
-            height: 300
+            height: "19rem"
         }
     }
 }))

@@ -10,47 +10,50 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: "flex",
         justifyContent: "space-between",
-        height: 100,
-        paddingLeft: 10,
-        paddingRight: 10,
+        height: "7rem",
+        paddingLeft: "0.7rem",
+        paddingRight: "0.7rem",
     },
     image: {
-        maxHeight: 100,
-        width: 60,
+        maxHeight: "6rem",
+        width: "4rem",
         aspectRatio: 3 / 5,
         boxSizing: "border-box"
     },
     name: {
         fontFamily: "Roboto",
-        textAlign: "left"
+        textAlign: "left",
+        display: "flex", 
+        flexDirection: "column", 
+        justifyContent: "center", 
+        height: "100%"
     },
     imageContainer: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        marginRight: 10,
+        marginRight: "0.7rem",
     },
     quantity: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        width: 150,
-        marginLeft: 10,
+        width: "11rem",
+        marginLeft: "0.7rem",
         boxSizing: "border-box",
     },
     quantityValue: {
         border: "solid",
-        paddingLeft: 5,
-        paddingRight: 5,
-        boxSizing: "border-box"
+        paddingLeft: "0.4rem",
+        paddingRight: "0.4rem",
+        boxSizing: "border-box",
+        minWidth: "3rem",
     },
     quantityControl: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center"
-    },
-    removeButton: {
     }
 }))
 
@@ -79,7 +82,7 @@ function CartItem(props) {
                     <AddIcon />
                 </IconButton>
                 <Divider orientation="vertical" />
-                <IconButton className={classes.removeButton} onClick={event => props.remove(props.id)}>
+                <IconButton onClick={event => props.remove(props.id)}>
                     <HighlightOffIcon style={{ color: "red" }} />
                 </IconButton>
             </div>

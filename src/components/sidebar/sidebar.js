@@ -18,7 +18,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import { NavLink } from 'react-router-dom'
 
-const drawerWidth = 280;
+const drawerWidth = "17rem"
 
 const useStyles = makeStyles((theme) => ({
     root: {

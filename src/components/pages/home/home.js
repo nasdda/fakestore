@@ -13,21 +13,26 @@ import { useDispatch } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 900,
-        height: 500,
+        width: "50rem",
+        height: "32rem",
         margin: "auto",
         [theme.breakpoints.down('sm')]: {
+            width: "40rem",
+            height: "30rem"
+        },
+        [theme.breakpoints.down('xs')]: {
             width: "100%",
+            height: "28rem"
         },
     },
     cardImage: {
-        height: 300,
+        height: "20rem",
         width: "100%",
         [theme.breakpoints.down('md')]: {
-            height: 250
+            height: "18rem"
         },
         [theme.breakpoints.down('xs')]: {
-            height: 200
+            height: "15rem"
         }
     },
     nav: {
@@ -51,9 +56,9 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
         left: 0,
         top: 0,
-        width: 500,
-        height: 300,
-        margin: 30,
+        width: "30rem",
+        height: "20rem",
+        margin: "1.5rem",
         [theme.breakpoints.down("xs")]: {
             margin: 0,
             width: "100%",
@@ -182,7 +187,7 @@ function Item(props) {
                 <Typography gutterBottom variant="h1">
                     {props.item.title}
                 </Typography>
-                <Typography variant="h5" color="textSecondary" style={{ height: 50 }}>
+                <Typography variant="h5" color="textSecondary" style={{ height: "3rem" }}>
                     {props.item.description}
                 </Typography>
             </CardContent>

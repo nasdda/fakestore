@@ -3,9 +3,12 @@ import { Typography, makeStyles, Divider } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     body: {
-        width: 800,
+        width: "50rem",
         [theme.breakpoints.down('sm')]: {
             width: "90%"
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: "100%",
         },
         margin: "auto",
     },
@@ -24,7 +27,7 @@ function Textchunk(props) {
 function About() {
     const classes = useStyles()
     return (
-        <div style={{ fontSize: 16 }}>
+        <div>
             <div>
                 <br />
                 <h2>About This Site...</h2>
