@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
     image: {
         maxHeight: "6rem",
-        maxWidth: "4rem",
+        maxWidth: "100%",
         aspectRatio: 3 / 5,
         boxSizing: "border-box"
     },
@@ -33,6 +33,10 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         justifyContent: "center",
         marginRight: "0.7rem",
+        boxSizing: "border-box",
+        minWidth: "4rem",
+        maxWidth: "4rem",
+        height: "100%"
     },
     quantity: {
         display: "flex",
