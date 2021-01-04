@@ -134,7 +134,7 @@ export default function Product(props) {
                                 <StarRatings numberOfStars={5}
                                     name='rating'
                                     rating={product.ratingScore}
-                                    starDimension="20"
+                                    starDimension="1.3rem"
                                     starRatedColor="orange"
                                 />
                             </div>
