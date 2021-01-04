@@ -298,6 +298,7 @@ const productData = [
 	"link": "https://amzn.to/3mVziqC",
 },
 {
+	"id": 28,
 	"category" : "electronics",
 	"productName" : "Logitech G502 Lightspeed Wireless Gaming Mouse with HERO 25K Sensor, PowerPlay Compatible, Tunable Weights and Lightsync RGB - Black",
 	"description" : "World’s No.1 Best Selling Wireless Gaming Gear Brand - Based on independent sales data (FEB ‘19 - FEB’20) of Wireless Gaming Keyboard, Mice, & PC Headset in units from: US, CA, CN, JP, KR, TW, TH, IN, DE, FR, RU, UK, SE, TR.  PowerPlay wireless charging: Never worry about your battery life again. Add the power play wireless charging system to keep your G502 Lightspeed Wireless Mouse and other compatible G mice charged while at rest and at play. Light speed wireless gaming mouse: Exclusive Logitech G ultra-fast wireless technology used by Pro gamers in competitions worldwide. Hero 25K sensor through a software update from G HUB, this upgrade is free to all players: Our most advanced, with 1:1 tracking, 400+ ips, and 100 - 25,600 max dpi sensitivity plus zero smoothing, filtering, or acceleration. 11 customizable buttons and hyper fast scroll wheel: Assign custom macro and shortcut commands to the buttons for each game with Logitech G hub software. Use hyper fast scrolling to rapidly review menus, long web pages and more",
