@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
     image: {
         maxHeight: "6rem",
-        width: "4rem",
+        maxWidth: "4rem",
         aspectRatio: 3 / 5,
         boxSizing: "border-box"
     },

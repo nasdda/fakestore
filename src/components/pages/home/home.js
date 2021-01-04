@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     cardImage: {
-        height: "20rem",
-        width: "100%",
+        maxHeight: "20rem",
+        maxWidth: "100%",
         [theme.breakpoints.down('md')]: {
             height: "18rem"
         },

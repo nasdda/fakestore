@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     image: {
-        width: "100%",
+        maxWidth: "100%",
         maxHeight: "24rem",
         aspectRatio: 3 / 5,
         [theme.breakpoints.down('sm')]: {
@@ -96,6 +96,7 @@ const useStyles = makeStyles(theme => ({
     imageContainer: {
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
         border: "solid",
         borderColor: "#001f3f",
         boxSizing: "border-box",

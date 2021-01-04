@@ -36,9 +36,9 @@ const useStyles = makeStyles((theme) => ({
     },
     image: {
         height: undefined,
-        width: "100%",
         aspectRatio: 3 / 5,
         maxHeight: "17rem",
+        maxWidth: "100%",
         [theme.breakpoints.down('sm')]: {
             maxHeight: "15rem"
         },
@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: "13rem",
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
         height: "100%",
         [theme.breakpoints.down('sm')]: {
             minWidth: "10rem",
