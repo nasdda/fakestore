@@ -31,7 +31,8 @@ const useStyles = makeStyles(theme => ({
     imageContainer: {
         marginRight: "0.7rem",
         boxSizing: "border-box",
-        width: "4rem",
+        minWidth: "4rem",
+        maxWidth: "4rem",
         height: "100%",
         display: "flex",
         justifyContent: "center",
