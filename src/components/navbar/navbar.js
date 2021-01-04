@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    menuButton: {
-        marginRight: theme.spacing(5),
-    },
     title: {
         textDecoration: 'none',
         color: "inherit",
@@ -33,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         width: "8rem",
         display: 'flex',
         alignItems: "center",
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
     },
     link: {
         color: "inherit",
@@ -60,7 +57,7 @@ export default function Navbar(props) {
         <div className={classes.root}>
             <AppBar position={props.position} color="default">
                 <Toolbar>
-                    <div className={classes.menuOuter}>
+                    <div className={classes.menuOuter} style={{display: "flex", justifyContent: "left"}}>
                         <IconButton onClick={() => {
                             console.log(history)
                             history.goBack()
@@ -68,7 +65,7 @@ export default function Navbar(props) {
                             <DoubleArrowIcon className={classes.backButton} />
                         </IconButton>
                         <Tooltip title="Show Sidebar">
-                            <IconButton className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => dispatch(toggleDrawer())}>
+                            <IconButton color="inherit" aria-label="menu" onClick={() => dispatch(toggleDrawer())}>
                                 <MenuIcon />
                             </IconButton>
                         </Tooltip>
