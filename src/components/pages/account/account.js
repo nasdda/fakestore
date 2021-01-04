@@ -151,7 +151,7 @@ export default function Account() {
                 <br />
                 <div className={classes.specifics}>
                     <div className={classes.info}>
-                        <div>Balance: ${balance}</div>
+                        <div>Balance: ${balance.toFixed(2)}</div>
                         <NavLink to="/balance">
                             <IconButton>
                                 <AddCircleIcon />

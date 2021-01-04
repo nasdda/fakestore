@@ -109,7 +109,8 @@ export default function CartSummary() {
     let taxes = 0.093 * subtotal
     taxes = Math.round(taxes * 100) / 100
     subtotal = Math.round(subtotal * 100) / 100
-    const total = subtotal + taxes
+    let total = subtotal + taxes
+    total = Math.round(total * 100) / 100
 
     return (
         <React.Fragment>
