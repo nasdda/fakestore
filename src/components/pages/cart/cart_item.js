@@ -17,25 +17,25 @@ const useStyles = makeStyles(theme => ({
     image: {
         height: undefined,
         maxHeight: "6rem",
-        maxWidth: "100%",
+        maxWidth: "4rem",
         aspectRatio: 3 / 5,
     },
     name: {
         fontFamily: "Roboto",
         textAlign: "left",
-        display: "flex", 
-        flexDirection: "column", 
-        justifyContent: "center", 
-        height: "100%"
-    },
-    imageContainer: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        height: "100%"
+    },
+    imageContainer: {
         marginRight: "0.7rem",
         boxSizing: "border-box",
         width: "4rem",
-        height: "100%"
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
     },
     quantity: {
         display: "flex",
