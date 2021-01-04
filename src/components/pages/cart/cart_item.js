@@ -15,10 +15,10 @@ const useStyles = makeStyles(theme => ({
         paddingRight: "0.7rem",
     },
     image: {
+        height: undefined,
         maxHeight: "6rem",
         maxWidth: "100%",
         aspectRatio: 3 / 5,
-        boxSizing: "border-box"
     },
     name: {
         fontFamily: "Roboto",
@@ -34,8 +34,7 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "center",
         marginRight: "0.7rem",
         boxSizing: "border-box",
-        minWidth: "4rem",
-        maxWidth: "4rem",
+        width: "4rem",
         height: "100%"
     },
     quantity: {
