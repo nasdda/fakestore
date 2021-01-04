@@ -61,14 +61,17 @@ const useStyles = makeStyles(theme => ({
         width: "60%",
         marginRight: "2rem",
         minHeight: "15rem",
-        minWidth: "30rem",
+        minWidth: "20rem",
         boxShadow: "2px 6px 6px rgba(0,0,0,0.15)",
         boxSizing: "border-box",
         [theme.breakpoints.down('sm')]: {
             width: "90%",
             marginRight: 0
         },
-
+        [theme.breakpoints.down('xs')]: {
+            width: "100%",
+            marginRight: 0
+        },
     }
 }))
 
