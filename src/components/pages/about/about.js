@@ -30,7 +30,7 @@ function About() {
         <div>
             <div>
                 <br />
-                <h2>About This Site...</h2>
+                <h2>About This Site</h2>
                 <br />
                 <Textchunk>First and foremost, this site is by all means only an online shopping simulation, 
                 hence no actual transitions would be going on, 
