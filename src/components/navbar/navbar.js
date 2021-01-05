@@ -57,13 +57,16 @@ export default function Navbar(props) {
         <div className={classes.root}>
             <AppBar position={props.position} color="default">
                 <Toolbar>
-                    <div className={classes.menuOuter} style={{display: "flex", justifyContent: "left"}}>
-                        <IconButton onClick={() => {
-                            console.log(history)
-                            history.goBack()
-                        }}>
-                            <DoubleArrowIcon className={classes.backButton} />
-                        </IconButton>
+                    <div className={classes.menuOuter} style={{ display: "flex", justifyContent: "left" }}>
+                        <Tooltip title="Back">
+                            <IconButton onClick={() => {
+                                if (history.length > 1) {
+                                    history.goBack()
+                                }
+                            }}>
+                                <DoubleArrowIcon className={classes.backButton} />
+                            </IconButton>
+                        </Tooltip>
                         <Tooltip title="Show Sidebar">
                             <IconButton color="inherit" aria-label="menu" onClick={() => dispatch(toggleDrawer())}>
                                 <MenuIcon />
@@ -79,21 +82,25 @@ export default function Navbar(props) {
                         <div style={{ display: 'flex', alignItems: "center" }}>
                             <div >{itemCount}</div>
                             <NavLink to='/cart' className={classes.link} onClick={handleClick}>
-                                <IconButton
-                                    color="inherit">
-                                    <ShoppingCartIcon />
-                                </IconButton>
+                                <Tooltip title="Cart">
+                                    <IconButton
+                                        color="inherit">
+                                        <ShoppingCartIcon />
+                                    </IconButton>
+                                </Tooltip>
                             </NavLink>
                         </div>
                         <NavLink to='/account' className={classes.link} onClick={handleClick}>
-                            <IconButton
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
+                            <Tooltip title="Account">
+                                <IconButton
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                </IconButton>
+                            </Tooltip>
                         </NavLink>
                     </div>
                 </Toolbar>

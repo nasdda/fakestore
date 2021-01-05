@@ -153,18 +153,22 @@ export default function Account() {
                     <div className={classes.info}>
                         <div>Balance: ${balance.toFixed(2)}</div>
                         <NavLink to="/balance">
-                            <IconButton>
-                                <AddCircleIcon />
-                            </IconButton>
+                            <Tooltip title="Recharge">
+                                <IconButton>
+                                    <AddCircleIcon />
+                                </IconButton>
+                            </Tooltip>
                         </NavLink>
                     </div>
                 </div>
                 <div className={classes.specifics} style={{ textAlign: "left" }}>
                     <div className={classes.info}>
                         <div style={{ display: "flex", alignItems: "flex-start", maxWidth: "80%" }}>Address:{addressSection}</div>
-                        <IconButton onClick={editHandler}>
-                            <EditIcon />
-                        </IconButton>
+                        <Tooltip title="Edit Address">
+                            <IconButton onClick={editHandler}>
+                                <EditIcon />
+                            </IconButton>
+                        </Tooltip>
                     </div>
                 </div>
             </Card>
