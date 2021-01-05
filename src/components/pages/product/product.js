@@ -117,6 +117,8 @@ export default function Product(props) {
     const images = product.images.map((image, i) => <div className={classes.imageContainer} key={i}><img src={image} alt="product" className={classes.image} /></div>)
     const [quantity, setQuantity] = useState(1)
 
+    window.scrollTo(0, 0);
+
     return (
         <React.Fragment>
             <div style={{ position: "relative", minHeight: "80vh" }}>

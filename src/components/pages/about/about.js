@@ -32,10 +32,16 @@ function About() {
                 <br />
                 <h2>About This Site...</h2>
                 <br />
-                <Textchunk>First and foremost, this site is by all means only an online shopping simulation, hence no actual transitions would be going on, and none of the personal data that you have entered would be saved.</Textchunk>
+                <Textchunk>First and foremost, this site is by all means only an online shopping simulation, 
+                hence no actual transitions would be going on, 
+                and none of the personal data that you have entered would be saved.</Textchunk>
                 <Divider className={classes.body} />
                 <br />
-                <Textchunk>Every product displayed on this site is based on real products taken mainly from Amazon.com. If you wish to purchase the actual product, click on the "actual product" link found on each product's detail page to be directed to the source of the real product.</Textchunk>
+                <Textchunk>Every product displayed on this site is 
+                based on real products taken mainly from Amazon.com. 
+                If you wish to purchase the actual product, 
+                there would be a link to the actual product 
+                available on the bottom of each product's detail page.</Textchunk>
             </div>
         </div>
     )
