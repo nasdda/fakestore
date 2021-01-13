@@ -199,17 +199,6 @@ const productData = [
 	"link": "https://amzn.to/3mKpAY4",
 },
 {
-	"id": 19,
-	"category": "electronics",
-	"productName": "Apple iPhone 11 [64GB, Purple] + Carrier Subscription [Cricket Wireless]",
-	"description": "OFFER INCLUDES: An Apple iPhone and a wireless plan with unlimited data/talk/text. 6.1-inch Liquid Retina HD LCD display, water and dust resistant, with Face ID. Dual-camera system with 12MP Ultra Wide camera, 12MP TrueDepth front camera with Portrait mode.",
-	"images": ["https://m.media-amazon.com/images/I/71xn9bCRfhL._FMwebp__.jpg", "https://m.media-amazon.com/images/I/71NUyj6UKZL._FMwebp__.jpg", "https://m.media-amazon.com/images/I/81TpFcp71JL._FMwebp__.jpg", "https://m.media-amazon.com/images/I/71r3+5huVcL._FMwebp__.jpg"],
-	"price": 887.98,
-	"ratingScore": 4.6,
-	"ratingCount": 1635,
-	"link": "https://amzn.to/34BPuav",
-},
-{
 	"id": 20,
 	"category": "electronics",
 	"productName": "Samsung Galaxy Z Flip Factory Unlocked Cell Phone |US Version - Single SIM | 256GB of Storage | Folding Glass Technology | Long-Lasting Battery | Mirror Black",
