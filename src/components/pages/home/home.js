@@ -9,6 +9,12 @@ import { Link } from 'react-router-dom'
 import { closeDrawer } from '../../../redux/slice/slice'
 import { useDispatch } from 'react-redux'
 
+import arrow from './images/arrow.png'
+import welcome from './images/welcome.jpg'
+import clothes1 from './images/clothesmove.jpg'
+import clothes2 from './images/clothescarasoul.jpg'
+import electronics1 from './images/electronicsmove.jpeg'
+import electronics2 from './images/electronicscarasoul.jpg'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -103,6 +109,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
+const carasoul_images = [welcome, electronics2, clothes2]
+
 export default function Home() {
     const classes = useStyles()
     const dispatch = useDispatch()
@@ -113,17 +121,17 @@ export default function Home() {
         {
             title: "Welcome!",
             description: "Please check out the About page located in the sidebar menu at the top left corner to find out what this site is about",
-            image: "https://images.ctfassets.net/eh05n0xjhplz/1Wcljis3B3iqDgFQnDjxe8/18e0f9ed84b6382ddfaef8de34b6469b/Getting_Started_with_Calendly.jpg",
+            image: 0
         },
         {
             title: "Electronics Section",
             description: "The Electronics section is now available",
-            image: "https://static.thehoneycombers.com/wp-content/uploads/sites/2/2017/05/electronics-.jpg"
+            image: 1
         },
         {
             title: "Clothing & Fashion Section",
             description: "The Clothing & Fashion section is now available",
-            image: "https://img5.goodfon.com/wallpaper/nbig/0/4d/odezhda-veshalka-ruka.jpg"
+            image: 2
         }
     ]
     return (
@@ -138,13 +146,13 @@ export default function Home() {
                 <div className={classes.container}>
                     <Link to="/electronics" onClick={handleClick}>
                         <img
-                            src="https://univers-technologues.com/wp-content/uploads/2018/06/Gadgets-Latest-Electronic-Gadgets.jpg"
+                            src={electronics1}
                             alt="electronics"
                             className={classes.a}
                         />
                         <div className={classes.centered}>Electronics</div>
                         <img
-                            src="https://image.flaticon.com/icons/png/512/120/120900.png"
+                            src={arrow}
                             alt="out"
                             className={classes.arrowLeft}
                         />
@@ -155,13 +163,13 @@ export default function Home() {
                 <div className={classes.container} onClick={handleClick}>
                     <Link to="/clothing-and-fashion">
                         <img
-                            src="https://wtvox.com/wtvox2/wp-content/uploads/2018/07/Feature.jpg"
+                            src={clothes1}
                             alt="clothing and fashion"
                             className={classes.a}
                         />
                         <div className={classes.centered}>Clothing & Fashion</div>
                         <img
-                            src="https://image.flaticon.com/icons/png/512/120/120900.png"
+                            src={arrow}
                             alt="out"
                             className={classes.arrowRight}
                         />
@@ -180,7 +188,7 @@ function Item(props) {
         <Card variant="outlined">
             <img
                 alt={props.item.title}
-                src={props.item.image}
+                src={carasoul_images[props.item.image]}
                 className={classes.cardImage}
             />
             <CardContent>
