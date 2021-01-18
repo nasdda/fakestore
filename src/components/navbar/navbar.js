@@ -60,7 +60,7 @@ export default function Navbar(props) {
                     <div className={classes.menuOuter} style={{ display: "flex", justifyContent: "left" }}>
                         <Tooltip title="Back">
                             <IconButton onClick={() => {
-                                if (history.length > 1) {
+                                if (history.location.pathname !== '/') {
                                     history.goBack()
                                 }
                             }}>
