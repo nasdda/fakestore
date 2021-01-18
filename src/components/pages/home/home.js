@@ -115,6 +115,7 @@ export default function Home() {
     const classes = useStyles()
     const dispatch = useDispatch()
     const handleClick = event => {
+        window.scrollTo(0, 0);
         dispatch(closeDrawer())
     }
     const items = [
