@@ -41,7 +41,7 @@ export const slice = createSlice({
         },
         fixAddress: state => {
             if (!state.address.trim()) {
-                state.address = "783 N. 8th St., The Moon, 97388"
+                state.address = "783 N. 8th Street, The Moon, 97388"
             }
         },
         addToCart: (state, action) => {
