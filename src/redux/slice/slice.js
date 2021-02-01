@@ -9,7 +9,7 @@ export const slice = createSlice({
         openDrawer: false,
         balance: 0,
         name: "Customer",
-        address: "783 N. 8th St., The Moon, 97388",
+        address: "783 N. 8th Street, The Moon, 97388",
         cart: {}
     },
     reducers: {
