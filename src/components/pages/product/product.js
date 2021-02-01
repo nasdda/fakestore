@@ -34,11 +34,20 @@ const useStyles = makeStyles(theme => ({
     productInfo: {
         display: "flex",
         justifyContent: "center",
+        width: "100%",
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: "column",
+            alignItems: "center"
+        }
     },
     textInfo: {
         width: "50%",
         marginLeft: "0.7rem",
-        marginRight: "0.7rem"
+        marginRight: "0.7rem",
+        [theme.breakpoints.down('xs')]: {
+            width: "90%",
+            marginBottom: "1rem"
+        }
     },
     name: {
         fontSize: "1.3rem",
@@ -125,7 +134,6 @@ export default function Product(props) {
                 <br />
                 <div className={classes.productInfo}>
                     <Carousel className={classes.imageCarousel}>
-
                         {images}
                     </Carousel>
                     <div className={classes.textInfo}>
