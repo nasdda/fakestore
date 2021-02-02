@@ -35,8 +35,6 @@ const useStyles = makeStyles((theme) => ({
         padding: "0.8rem"
     },
     image: {
-        height: undefined,
-        aspectRatio: 3 / 5,
         maxHeight: "17rem",
         maxWidth: "100%",
         [theme.breakpoints.down('sm')]: {
@@ -91,7 +89,6 @@ export default function ProductChunk(props) {
 
     return (
         <Card className={classes.root} variant="outlined">
-
             <div className={classes.imageOuter}>
                 <Link to={`/product?id=${props.data.id}`}>
                     <img src={props.data.images[0]} alt="product" className={classes.image} />

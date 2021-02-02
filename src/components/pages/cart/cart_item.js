@@ -15,10 +15,8 @@ const useStyles = makeStyles(theme => ({
         paddingRight: "0.7rem",
     },
     image: {
-        height: undefined,
         maxHeight: "6rem",
         maxWidth: "4rem",
-        aspectRatio: 3 / 5,
     },
     name: {
         fontFamily: "Roboto",
