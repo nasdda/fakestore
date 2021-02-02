@@ -21,14 +21,25 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('sm')]: {
             height: "25rem",
             width: "13rem"
-        }
+        },
     },
     image: {
         maxWidth: "100%",
         maxHeight: "24rem",
-        aspectRatio: 3 / 5,
         [theme.breakpoints.down('sm')]: {
             maxHeight: "18rem"
+        }
+    },
+    imageContainer: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "solid",
+        borderColor: "#001f3f",
+        boxSizing: "border-box",
+        height: "25rem",
+        [theme.breakpoints.down('sm')]: {
+            height: "19rem"
         }
     },
     productInfo: {
@@ -100,18 +111,6 @@ const useStyles = makeStyles(theme => ({
         fontSize: "1.2rem",
         [theme.breakpoints.down('sm')]: {
             fontSize: "1rem"
-        }
-    },
-    imageContainer: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        border: "solid",
-        borderColor: "#001f3f",
-        boxSizing: "border-box",
-        height: "25rem",
-        [theme.breakpoints.down('sm')]: {
-            height: "19rem"
         }
     }
 }))
