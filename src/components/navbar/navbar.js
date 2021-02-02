@@ -18,7 +18,18 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    title: {
+    siteName: {
+        fontFamily: "BlackChancery", 
+        fontWeight: "bold", 
+        fontSize: "2rem",
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "1.5rem"
+        },
+        [theme.breakpoints.down("xs")]: {
+            fontSize: "1rem"
+        }
+    },
+    titleLink: {
         textDecoration: 'none',
         color: "inherit",
         flexGrow: 1
@@ -73,9 +84,9 @@ export default function Navbar(props) {
                             </IconButton>
                         </Tooltip>
                     </div>
-                    <NavLink to='/' className={classes.title} onClick={handleClick}>
+                    <NavLink to='/' className={classes.titleLink} onClick={handleClick}>
                         <Typography variant="h6">
-                            <span style={{ fontFamily: "BlackChancery", fontWeight: "bold", fontSize: "2rem" }}>Fake Store</span>
+                            <span className={classes.siteName}>Fake Store</span>
                         </Typography>
                     </NavLink>
                     <div className={classes.menuOuter}>
