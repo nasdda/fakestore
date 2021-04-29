@@ -33,7 +33,7 @@ function About() {
                 <h2>About This Site</h2>
                 <br />
                 <Textchunk>First and foremost, this site is by all means only an online shopping simulation, 
-                hence no actual transitions would be going on, 
+                hence no actual transactions would be going on, 
                 and none of the personal data that you have entered would be saved.</Textchunk>
                 <Divider className={classes.body} />
                 <br />
